@@ -1,8 +1,11 @@
 package net.pufferlab.antiquities;
 
-import com.myname.mymodid.Tags;
+import net.minecraft.util.ResourceLocation;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.myname.mymodid.Tags;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -17,17 +20,28 @@ public class Antiquities {
     public static final String MODID = "antiquities";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    @SidedProxy(clientSide = "net.pufferlab.antiquities.ClientProxy", serverSide = "net.pufferlab.antiquities.CommonProxy")
+    @SidedProxy(
+        clientSide = "net.pufferlab.antiquities.ClientProxy",
+        serverSide = "net.pufferlab.antiquities.CommonProxy")
     public static CommonProxy proxy;
+
+    public static Registry registry = new Registry();
+
+    @Mod.Instance(Antiquities.MODID)
+    public static Antiquities instance;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        registry.preInit(event);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+
+        registry.init();
+        proxy.registerRenders();
     }
 
     @Mod.EventHandler
@@ -38,5 +52,9 @@ public class Antiquities {
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
         proxy.serverStarting(event);
+    }
+
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation(MODID, path);
     }
 }

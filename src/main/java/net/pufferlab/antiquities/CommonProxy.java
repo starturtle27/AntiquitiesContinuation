@@ -1,12 +1,14 @@
 package net.pufferlab.antiquities;
 
 import com.myname.mymodid.Tags;
+
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 public class CommonProxy {
+
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
@@ -14,9 +16,19 @@ public class CommonProxy {
         Antiquities.LOG.info("Antiquities is at version " + Tags.VERSION);
     }
 
+    public void registerRenders() {}
+
     public void init(FMLInitializationEvent event) {}
 
     public void postInit(FMLPostInitializationEvent event) {}
 
     public void serverStarting(FMLServerStartingEvent event) {}
+
+    public int getChairRenderID() {
+        return 0;
+    }
+
+    public int getTableRenderID() {
+        return 0;
+    }
 }
