@@ -5,12 +5,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.pufferlab.antiquities.Antiquities;
+import net.pufferlab.antiquities.Constants;
 import net.pufferlab.antiquities.tileentities.TileEntityTable;
 
-public class BlockTable extends BlockContainer {
+public class BlockTable extends BlockMetaContainer {
 
-    public BlockTable() {
-        super(Material.wood);
+    public BlockTable(String[] materials) {
+        super(Material.wood, materials, "chair", Constants.none);
         this.setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
     }
 

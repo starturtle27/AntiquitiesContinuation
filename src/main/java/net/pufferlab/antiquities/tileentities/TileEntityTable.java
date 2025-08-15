@@ -1,7 +1,9 @@
 package net.pufferlab.antiquities.tileentities;
 
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.pufferlab.antiquities.blocks.BlockMetaContainer;
 import net.pufferlab.antiquities.blocks.BlockTable;
 
 public class TileEntityTable extends TileEntity {

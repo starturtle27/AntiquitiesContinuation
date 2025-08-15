@@ -1,5 +1,7 @@
 package net.pufferlab.antiquities;
 
+import net.minecraft.client.Minecraft;
+
 public class Utils {
 
     public static int getDirectionXZ(int side) {
@@ -57,5 +59,14 @@ public class Utils {
             z++;
         }
         return z;
+    }
+
+    public static boolean containsExactMatch(String[] array, String targetString) {
+        for (String element : array) {
+            if (element.equals(targetString)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

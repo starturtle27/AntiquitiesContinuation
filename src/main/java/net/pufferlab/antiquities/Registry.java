@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.pufferlab.antiquities.blocks.BlockChair;
 import net.pufferlab.antiquities.blocks.BlockTable;
 import net.pufferlab.antiquities.entity.EntitySeat;
-import net.pufferlab.antiquities.itemblocks.ItemBlockRotatedXZ;
+import net.pufferlab.antiquities.itemblocks.ItemBlockMeta;
 import net.pufferlab.antiquities.tileentities.TileEntityChair;
 import net.pufferlab.antiquities.tileentities.TileEntityTable;
 
@@ -18,13 +18,13 @@ public class Registry {
     public static Block table;
 
     public void preInit(FMLPreInitializationEvent event) {
-        chair = new BlockChair();
-        table = new BlockTable();
+        chair = new BlockChair(Constants.woodTypes);
+        table = new BlockTable(Constants.woodTypes);
         GameRegistry.registerTileEntity(TileEntityChair.class, "chair");
         GameRegistry.registerTileEntity(TileEntityTable.class, "table");
 
-        GameRegistry.registerBlock(chair, ItemBlockRotatedXZ.class, "chair");
-        GameRegistry.registerBlock(table, "table");
+        GameRegistry.registerBlock(chair, ItemBlockMeta.class, "chair");
+        GameRegistry.registerBlock(table, ItemBlockMeta.class, "table");
     }
 
     public void init() {

@@ -4,18 +4,23 @@ import java.util.List;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.pufferlab.antiquities.Antiquities;
+import net.pufferlab.antiquities.Constants;
+import net.pufferlab.antiquities.Utils;
 import net.pufferlab.antiquities.entity.EntitySeat;
 import net.pufferlab.antiquities.tileentities.TileEntityChair;
 
-public class BlockChair extends BlockContainer {
+public class BlockChair extends BlockMetaContainer {
 
-    public BlockChair() {
-        super(Material.wood);
+    public BlockChair(String[] materials) {
+        super(Material.wood, materials, "chair", Constants.none);
         this.setBlockBounds(0.1F, 0F, 0.1F, 0.9F, 1F, 0.9F);
     }
 
@@ -35,6 +40,18 @@ public class BlockChair extends BlockContainer {
 
         return true;
 
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, int x, int y, int z, EntityLivingBase placer, ItemStack itemIn) {
+        super.onBlockPlacedBy(worldIn, x, y, z, placer, itemIn);
+
+        int yaw = MathHelper.floor_double((double) (placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        int metayaw = Utils.getDirectionXZYaw(yaw);
+        TileEntityChair chair = (TileEntityChair) worldIn.getTileEntity(x, y, z);
+        if(chair != null) {
+            chair.setFacingMeta(metayaw);
+        }
     }
 
     @Override
