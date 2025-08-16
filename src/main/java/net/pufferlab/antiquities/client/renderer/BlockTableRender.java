@@ -29,6 +29,10 @@ public class BlockTableRender implements ISimpleBlockRenderingHandler {
         String wood = block2.getType(metadata);
         this.model.top1C.isHidden = true;
         this.model.top2C.isHidden = true;
+        this.model.top1LB.isHidden = true;
+        this.model.top2LB.isHidden = true;
+        this.model.top3LB.isHidden = true;
+        this.model.top4LB.isHidden = true;
         model.render(wood);
     }
 
@@ -40,6 +44,11 @@ public class BlockTableRender implements ISimpleBlockRenderingHandler {
         if (mop == null || mop.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK
             || !(world.getBlock(mop.blockX, mop.blockY, mop.blockZ) instanceof BlockTable)) return false;
         TileEntityTable table = (TileEntityTable) world.getTileEntity(x, y, z);
+        String wood = "null";
+        if (block instanceof BlockMetaContainer block2) {
+            int metadata = world.getBlockMetadata(table.xCoord, table.yCoord, table.zCoord);
+            wood = block2.getType(metadata);
+        }
 
         this.model.leg1.isHidden = table.connectZPos || table.connectXPos;
         this.model.side1.isHidden = table.connectZPos;
@@ -53,29 +62,29 @@ public class BlockTableRender implements ISimpleBlockRenderingHandler {
 
         this.model.side4.isHidden = table.connectXPos;
 
-        this.model.top1B.isHidden = table.connectXNeg;
+        this.model.top1B.isHidden = !(!(table.connectZNeg) && !(table.connectXNeg));
+        this.model.top1LB.isHidden = !(table.connectZNeg) || table.connectXNeg;
         this.model.top1.isHidden = table.connectXNeg;
 
         this.model.top1C.isHidden = !table.connectXNeg;
-
         this.model.top1CB.isHidden = !(table.connectXNeg && table.connectZNeg);
 
-        this.model.top3B.isHidden = table.connectXPos;
+        this.model.top3B.isHidden = table.connectXPos || table.connectZPos;
+        this.model.top3LB.isHidden = !(table.connectZPos) || table.connectXPos;
         this.model.top3.isHidden = table.connectXPos;
 
-        this.model.top2B.isHidden = table.connectZNeg;
+        this.model.top2B.isHidden = table.connectZNeg || table.connectXPos;
+        this.model.top2LB.isHidden = !(table.connectXPos) || table.connectZNeg;
         this.model.top2.isHidden = table.connectZNeg;
 
         this.model.top2C.isHidden = !table.connectZNeg;
 
-        this.model.top4B.isHidden = table.connectZPos;
+        this.model.top4B.isHidden = table.connectZPos || table.connectXNeg;
+        this.model.top4LB.isHidden = !(table.connectXNeg) || table.connectZPos;
         this.model.top4.isHidden = table.connectZPos;
 
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
-        BlockMetaContainer block2 = (BlockMetaContainer) block;
-        int metadata = world.getBlockMetadata(x, y, z);
-        String wood = block2.getType(metadata);
         model.render(wood);
         GL11.glPopMatrix();
         return true;

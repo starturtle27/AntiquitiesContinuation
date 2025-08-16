@@ -33,6 +33,10 @@ public class ModelTable extends ModelBase {
     public ModelRenderer top1C;
     public ModelRenderer top1CB;
     public ModelRenderer top2C;
+    public ModelRenderer top1LB;
+    public ModelRenderer top2LB;
+    public ModelRenderer top3LB;
+    public ModelRenderer top4LB;
 
     public ModelTable() {
         textureWidth = 128;
@@ -93,6 +97,11 @@ public class ModelTable extends ModelBase {
         top1B.cubeList.add(new ModelBox(bb_main, 14, 19, -9.0F, -15.99F + 8F, 7.0F, 2, 2, 2, 0.0F));
         bb_main.addChild(top1B);
 
+        top1LB = new ModelRenderer(this);
+        top1LB.setRotationPoint(0.0F, 0.0F, 0.0F);
+        top1LB.cubeList.add(new ModelBox(bb_main, 14 + 8, 19, -9.0F, -15.99F + 8F, 7.0F, 2, 2, 2, 0.0F));
+        bb_main.addChild(top1LB);
+
         top1C = new ModelRenderer(this);
         top1C.setRotationPoint(0.0F, 0.0F, 0.0F);
         top1C.cubeList.add(new ModelBox(bb_main, 4, 45, -9.0F, -15.99F + 8F, -7.0F, 2, 2, 14, 0.0F));
@@ -115,6 +124,12 @@ public class ModelTable extends ModelBase {
         top2B.rotateAngleY = (float) Math.toRadians(90);
         bb_main.addChild(top2B);
 
+        top2LB = new ModelRenderer(this);
+        top2LB.setRotationPoint(0.0F, 0.0F, 0.0F);
+        top2LB.cubeList.add(new ModelBox(bb_main, 14 + 8, 19, -9.0F, -15.99F + 8F, 7.0F, 2, 2, 2, 0.0F));
+        top2LB.rotateAngleY = (float) Math.toRadians(90);
+        bb_main.addChild(top2LB);
+
         top2C = new ModelRenderer(this);
         top2C.setRotationPoint(0.0F, 0.0F, 0.0F);
         top2C.cubeList.add(new ModelBox(bb_main, 4, 45, -9.0F, -15.99F + 8F, -7.0F, 2, 2, 14, 0.0F));
@@ -133,6 +148,12 @@ public class ModelTable extends ModelBase {
         top3B.rotateAngleY = (float) Math.toRadians(180);
         bb_main.addChild(top3B);
 
+        top3LB = new ModelRenderer(this);
+        top3LB.setRotationPoint(0.0F, 0.0F, 0.0F);
+        top3LB.cubeList.add(new ModelBox(bb_main, 14 + 8, 19, -9.0F, -15.99F + 8F, 7.0F, 2, 2, 2, 0.0F));
+        top3LB.rotateAngleY = (float) Math.toRadians(180);
+        bb_main.addChild(top3LB);
+
         top4 = new ModelRenderer(this);
         top4.setRotationPoint(0.0F, 0.0F, 0.0F);
         top4.cubeList.add(new ModelBox(bb_main, 2, 21, -9.0F, -15.99F + 8F, -7.0F, 2, 2, 14, 0.0F));
@@ -144,6 +165,12 @@ public class ModelTable extends ModelBase {
         top4B.cubeList.add(new ModelBox(bb_main, 14, 19, -9.0F, -15.99F + 8F, 7.0F, 2, 2, 2, 0.0F));
         top4B.rotateAngleY = (float) Math.toRadians(270);
         bb_main.addChild(top4B);
+
+        top4LB = new ModelRenderer(this);
+        top4LB.setRotationPoint(0.0F, 0.0F, 0.0F);
+        top4LB.cubeList.add(new ModelBox(bb_main, 14 + 8, 19, -9.0F, -15.99F + 8F, 7.0F, 2, 2, 2, 0.0F));
+        top4LB.rotateAngleY = (float) Math.toRadians(270);
+        bb_main.addChild(top4LB);
     }
 
     public void render(String type) {

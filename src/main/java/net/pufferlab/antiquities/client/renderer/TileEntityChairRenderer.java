@@ -1,5 +1,6 @@
 package net.pufferlab.antiquities.client.renderer;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -17,9 +18,12 @@ public class TileEntityChairRenderer extends TileEntitySpecialRenderer {
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float partialTicks) {
         World world = tileEntity.getWorldObj();
         TileEntityChair chair = (TileEntityChair) tileEntity;
-        BlockMetaContainer block2 = (BlockMetaContainer) world.getBlock(chair.xCoord, chair.yCoord, chair.zCoord);
-        int metadata = world.getBlockMetadata(chair.xCoord, chair.yCoord, chair.zCoord);
-        String wood = block2.getType(metadata);
+        Block block = world.getBlock(chair.xCoord, chair.yCoord, chair.zCoord);
+        String wood = "null";
+        if (block instanceof BlockMetaContainer block2) {
+            int metadata = world.getBlockMetadata(chair.xCoord, chair.yCoord, chair.zCoord);
+            wood = block2.getType(metadata);
+        }
 
         model.setFacing(chair.facingMeta);
 

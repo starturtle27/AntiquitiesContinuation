@@ -39,9 +39,11 @@ public class BlockChairRender implements ISimpleBlockRenderingHandler {
         if (mop == null || mop.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK
             || !(world.getBlock(mop.blockX, mop.blockY, mop.blockZ) instanceof BlockChair)) return false;
         TileEntityChair chair = (TileEntityChair) world.getTileEntity(x, y, z);
-        BlockMetaContainer block2 = (BlockMetaContainer) block;
-        int metadata = world.getBlockMetadata(chair.xCoord, chair.yCoord, chair.zCoord);
-        String wood = block2.getType(metadata);
+        String wood = "null";
+        if (block instanceof BlockMetaContainer block2) {
+            int metadata = world.getBlockMetadata(chair.xCoord, chair.yCoord, chair.zCoord);
+            wood = block2.getType(metadata);
+        }
 
         model.setFacing(chair.facingMeta);
 
