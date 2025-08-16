@@ -51,6 +51,11 @@ public class EntitySeat extends Entity {
         if (this.riddenByEntity == null && !this.worldObj.isRemote) {
             this.setDead();
         }
+
+        if(!(worldObj.getTileEntity((int) this.posX, (int) this.posY, (int) this.posZ) instanceof TileEntityChair) && !this.worldObj.isRemote) {
+            this.setDead();
+        }
+        
     }
 
     @Override
