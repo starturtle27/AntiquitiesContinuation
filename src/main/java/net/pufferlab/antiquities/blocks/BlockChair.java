@@ -3,6 +3,7 @@ package net.pufferlab.antiquities.blocks;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -39,6 +40,23 @@ public class BlockChair extends BlockMetaContainer {
 
         return true;
 
+    }
+
+    @Override
+    public void onBlockPreDestroy(World worldIn, int x, int y, int z, int meta) {
+        super.onBlockPreDestroy(worldIn, x, y, z, meta);
+
+        List<EntityPlayer> players = worldIn
+            .getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1));
+
+        if (!players.isEmpty()) {
+            for (EntityPlayer player : players) {
+                Entity entity = player.ridingEntity;
+                if (entity instanceof EntitySeat) {
+                    player.setSneaking(true);
+                }
+            }
+        }
     }
 
     @Override
