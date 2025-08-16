@@ -8,9 +8,8 @@ import net.minecraft.world.IBlockAccess;
 import net.pufferlab.antiquities.blocks.BlockChair;
 import net.pufferlab.antiquities.blocks.BlockMetaContainer;
 import net.pufferlab.antiquities.client.models.ModelChair;
-
 import net.pufferlab.antiquities.tileentities.TileEntityChair;
-import net.pufferlab.antiquities.tileentities.TileEntityTable;
+
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;

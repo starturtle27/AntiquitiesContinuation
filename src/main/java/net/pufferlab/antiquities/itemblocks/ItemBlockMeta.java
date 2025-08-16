@@ -7,6 +7,7 @@ import net.pufferlab.antiquities.Utils;
 import net.pufferlab.antiquities.blocks.BlockMetaContainer;
 
 public class ItemBlockMeta extends ItemBlock {
+
     private String[] elements;
     private String[] elementsBlacklist;
     private String name;

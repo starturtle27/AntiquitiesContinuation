@@ -2,7 +2,6 @@ package net.pufferlab.antiquities.blocks;
 
 import java.util.List;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,7 +48,7 @@ public class BlockChair extends BlockMetaContainer {
         int yaw = MathHelper.floor_double((double) (placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
         int metayaw = Utils.getDirectionXZYaw(yaw);
         TileEntityChair chair = (TileEntityChair) worldIn.getTileEntity(x, y, z);
-        if(chair != null) {
+        if (chair != null) {
             chair.setFacingMeta(metayaw);
         }
     }

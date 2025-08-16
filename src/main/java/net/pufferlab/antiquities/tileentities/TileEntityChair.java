@@ -1,12 +1,10 @@
 package net.pufferlab.antiquities.tileentities;
 
-import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.pufferlab.antiquities.blocks.BlockMetaContainer;
 
 public class TileEntityChair extends TileEntity {
 
@@ -38,7 +36,12 @@ public class TileEntityChair extends TileEntity {
 
         dataTag.setInteger("facingMeta", this.facingMeta);
 
-        return (Packet)new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, dataTag);
+        return (Packet) new S35PacketUpdateTileEntity(
+            this.xCoord,
+            this.yCoord,
+            this.zCoord,
+            this.blockMetadata,
+            dataTag);
     }
 
     @Override

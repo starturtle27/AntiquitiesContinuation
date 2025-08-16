@@ -6,7 +6,6 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Constants;
-import net.pufferlab.antiquities.Utils;
 
 public class ModelChair extends ModelBase {
 
@@ -34,7 +33,8 @@ public class ModelChair extends ModelBase {
     }
 
     public void bindTex(String fileName) {
-        Minecraft.getMinecraft().renderEngine.bindTexture(Antiquities.asResource("textures/models/" + fileName + ".png"));
+        Minecraft.getMinecraft().renderEngine
+            .bindTexture(Antiquities.asResource("textures/models/" + fileName + ".png"));
     }
 
     public void setFacing(int meta) {

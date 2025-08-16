@@ -1,16 +1,10 @@
 package net.pufferlab.antiquities.blocks;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Constants;
-import net.pufferlab.antiquities.Utils;
-import net.pufferlab.antiquities.tileentities.TileEntityChair;
 import net.pufferlab.antiquities.tileentities.TileEntityTable;
 
 public class BlockTable extends BlockMetaContainer {

@@ -180,7 +180,8 @@ public class ModelTable extends ModelBase {
     }
 
     public void bindTex(String fileName) {
-        Minecraft.getMinecraft().renderEngine.bindTexture(Antiquities.asResource("textures/models/" + fileName + ".png"));
+        Minecraft.getMinecraft().renderEngine
+            .bindTexture(Antiquities.asResource("textures/models/" + fileName + ".png"));
     }
 
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {

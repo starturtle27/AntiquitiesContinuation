@@ -1,7 +1,5 @@
 package net.pufferlab.antiquities;
 
-import net.minecraft.client.Minecraft;
-
 public class Utils {
 
     public static int getDirectionXZ(int side) {

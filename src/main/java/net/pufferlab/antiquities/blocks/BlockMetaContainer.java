@@ -1,7 +1,7 @@
 package net.pufferlab.antiquities.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,9 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.pufferlab.antiquities.Utils;
 
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockMetaContainer extends BlockContainer {
+
     private String[] elements;
     private String[] elementsBlacklist;
     private IIcon[] icons;
@@ -24,7 +26,7 @@ public abstract class BlockMetaContainer extends BlockContainer {
         elements = materials;
         name = type;
         elementsBlacklist = blacklist;
-        if(material == Material.wood) {
+        if (material == Material.wood) {
             this.setHardness(2.0F);
             this.setResistance(5.0F);
             this.setStepSound(soundTypeWood);

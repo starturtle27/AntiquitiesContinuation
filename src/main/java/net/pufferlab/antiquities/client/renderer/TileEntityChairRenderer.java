@@ -6,8 +6,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.pufferlab.antiquities.blocks.BlockMetaContainer;
 import net.pufferlab.antiquities.client.models.ModelChair;
-
 import net.pufferlab.antiquities.tileentities.TileEntityChair;
+
 import org.lwjgl.opengl.GL11;
 
 public class TileEntityChairRenderer extends TileEntitySpecialRenderer {
