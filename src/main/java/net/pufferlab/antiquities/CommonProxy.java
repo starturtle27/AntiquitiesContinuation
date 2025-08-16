@@ -31,4 +31,8 @@ public class CommonProxy {
     public int getTableRenderID() {
         return 0;
     }
+
+    public int getGlobeRenderID() {
+        return 0;
+    }
 }
