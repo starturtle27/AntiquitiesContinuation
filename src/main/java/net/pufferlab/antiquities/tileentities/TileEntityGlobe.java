@@ -1,6 +1,7 @@
 package net.pufferlab.antiquities.tileentities;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.pufferlab.antiquities.Config;
 
 public class TileEntityGlobe extends TileEntityFacing {
 
@@ -24,14 +25,16 @@ public class TileEntityGlobe extends TileEntityFacing {
     }
 
     public void addSpeed() {
-        this.speed = this.speed + 3F;
+        if (this.speed < Config.globeMaxSpeed) {
+            this.speed = this.speed + Config.globeSpeedAddition;
+        }
     }
 
     @Override
     public void updateEntity() {
         if (worldObj.isRemote) {
             if (this.speed > 0) {
-                this.speed = this.speed - 0.25F;
+                this.speed = this.speed - Config.globeSpeedDeceleration;
             } else {
                 this.speed = 0;
             }

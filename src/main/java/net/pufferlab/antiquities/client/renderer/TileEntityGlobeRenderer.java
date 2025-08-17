@@ -18,7 +18,6 @@ public class TileEntityGlobeRenderer extends TileEntitySpecialRenderer {
         float partialRotation = globe.rotation;
 
         if (globe.speed > 0) {
-            globe.speed = globe.speed - (partialTicks * 0.05F);
             partialRotation = globe.rotation + partialTicks;
         }
 
