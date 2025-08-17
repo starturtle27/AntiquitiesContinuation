@@ -24,9 +24,9 @@ public class Registry {
         chair = new BlockChair(Constants.woodTypes);
         table = new BlockTable(Constants.woodTypes);
         globe = new BlockGlobe();
-        GameRegistry.registerTileEntity(TileEntityChair.class, "antiquitis_chair");
-        GameRegistry.registerTileEntity(TileEntityTable.class, "antiquitis_table");
-        GameRegistry.registerTileEntity(TileEntityGlobe.class, "antiquitis_globe");
+        GameRegistry.registerTileEntity(TileEntityChair.class, "antiquities_chair");
+        GameRegistry.registerTileEntity(TileEntityTable.class, "antiquities_table");
+        GameRegistry.registerTileEntity(TileEntityGlobe.class, "antiquities_globe");
 
         GameRegistry.registerBlock(chair, ItemBlockMeta.class, "chair");
         GameRegistry.registerBlock(table, ItemBlockMeta.class, "table");
