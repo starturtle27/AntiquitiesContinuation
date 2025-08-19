@@ -21,8 +21,21 @@ public class TileEntityShelfRenderer extends TileEntitySpecialRenderer {
     ModelShelfFull model0 = new ModelShelfFull();
     ModelShelf model1 = new ModelShelf();
     ModelShelfLong model2 = new ModelShelfLong();
-    private RenderItem itemRenderer;
     private RenderManager renderManager = RenderManager.instance;
+    private RenderItem itemRenderer = new RenderItem() {
+
+        public byte getMiniBlockCount(ItemStack stack, byte original) {
+            return 1;
+        }
+
+        public boolean shouldBob() {
+            return false;
+        }
+
+        public boolean shouldSpreadItems() {
+            return false;
+        }
+    };
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float partialTicks) {
@@ -30,30 +43,15 @@ public class TileEntityShelfRenderer extends TileEntitySpecialRenderer {
         TileEntityShelf shelf = (TileEntityShelf) tileEntity;
         Block block = world.getBlock(shelf.xCoord, shelf.yCoord, shelf.zCoord);
         if (!(block instanceof BlockShelf)) return;
-
         BlockShelf block2 = (BlockShelf) block;
         int metadata = world.getBlockMetadata(shelf.xCoord, shelf.yCoord, shelf.zCoord);
         String wood = block2.getType(metadata);
 
+        this.itemRenderer.setRenderManager(renderManager);
+
         model0.setFacing(shelf.facingMeta);
         model1.setFacing(shelf.facingMeta);
         model2.setFacing(shelf.facingMeta);
-
-        this.itemRenderer = new RenderItem() {
-
-            public byte getMiniBlockCount(ItemStack stack, byte original) {
-                return 1;
-            }
-
-            public boolean shouldBob() {
-                return false;
-            }
-
-            public boolean shouldSpreadItems() {
-                return false;
-            }
-        };
-        this.itemRenderer.setRenderManager(renderManager);
 
         GL11.glEnable(GL11.GL_LIGHTING);
         ItemStack slot1 = shelf.getInventoryStack(0);
