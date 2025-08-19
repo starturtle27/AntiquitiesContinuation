@@ -3,7 +3,7 @@ package net.pufferlab.antiquities.tileentities;
 import net.minecraft.nbt.NBTTagCompound;
 import net.pufferlab.antiquities.Config;
 
-public class TileEntityGlobe extends TileEntityFacing {
+public class TileEntityGlobe extends TileEntityMetaFacing {
 
     public float rotation;
     public float speed;

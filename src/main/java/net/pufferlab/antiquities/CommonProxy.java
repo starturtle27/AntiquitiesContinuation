@@ -30,6 +30,10 @@ public class CommonProxy {
         return 0;
     }
 
+    public int getShelfRenderID() {
+        return 0;
+    }
+
     public int getGlobeRenderID() {
         return 0;
     }

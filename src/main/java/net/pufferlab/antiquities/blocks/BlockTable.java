@@ -9,7 +9,7 @@ import net.pufferlab.antiquities.tileentities.TileEntityTable;
 
 public class BlockTable extends BlockMetaContainer {
 
-    public BlockTable(String[] materials) {
+    public BlockTable(String... materials) {
         super(Material.wood, materials, "table", Constants.none);
         this.setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
     }

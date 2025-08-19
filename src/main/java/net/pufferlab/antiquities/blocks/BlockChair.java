@@ -19,7 +19,7 @@ import net.pufferlab.antiquities.tileentities.TileEntityChair;
 
 public class BlockChair extends BlockMetaContainer {
 
-    public BlockChair(String[] materials) {
+    public BlockChair(String... materials) {
         super(Material.wood, materials, "chair", Constants.none);
         this.setBlockBounds(0.1F, 0F, 0.1F, 0.9F, 1F, 0.9F);
     }

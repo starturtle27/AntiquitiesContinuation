@@ -3,6 +3,7 @@ package net.pufferlab.antiquities;
 import net.pufferlab.antiquities.client.renderer.*;
 import net.pufferlab.antiquities.tileentities.TileEntityChair;
 import net.pufferlab.antiquities.tileentities.TileEntityGlobe;
+import net.pufferlab.antiquities.tileentities.TileEntityShelf;
 import net.pufferlab.antiquities.tileentities.TileEntityTable;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -12,18 +13,22 @@ public class ClientProxy extends CommonProxy {
 
     int chairRenderID;
     int tableRenderID;
+    int shelfRenderID;
     int globeRenderID;
 
     @Override
     public void registerRenders() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChair.class, new TileEntityChairRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTable.class, new TileEntityTableRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShelf.class, new TileEntityShelfRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlobe.class, new TileEntityGlobeRenderer());
 
         chairRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new BlockChairRender(chairRenderID));
         tableRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new BlockTableRender(tableRenderID));
+        shelfRenderID = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(new BlockShelfRender(shelfRenderID));
         globeRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new BlockGlobeRender(globeRenderID));
     }
@@ -36,6 +41,11 @@ public class ClientProxy extends CommonProxy {
     @Override
     public int getTableRenderID() {
         return tableRenderID;
+    }
+
+    @Override
+    public int getShelfRenderID() {
+        return shelfRenderID;
     }
 
     @Override

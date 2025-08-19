@@ -13,3 +13,24 @@ tile.antiquities.birch_table.name=Birch Table
 tile.antiquities.jungle_table.name=Jungle Table
 tile.antiquities.acacia_table.name=Acacia Table
 tile.antiquities.dark_oak_table.name=Dark Oak Table
+
+tile.antiquities.oak_shelf_0.name=Oak Shelf
+tile.antiquities.spruce_shelf_0.name=Spruce Shelf
+tile.antiquities.birch_shelf_0.name=Birch Shelf
+tile.antiquities.jungle_shelf_0.name=Jungle Shelf
+tile.antiquities.acacia_shelf_0.name=Acacia Shelf
+tile.antiquities.dark_oak_shelf_0.name=Dark Oak Shelf
+
+tile.antiquities.oak_shelf_1.name=Oak Cross Shelf
+tile.antiquities.spruce_shelf_1.name=Spruce Cross Shelf
+tile.antiquities.birch_shelf_1.name=Birch Cross Shelf
+tile.antiquities.jungle_shelf_1.name=Jungle Cross Shelf
+tile.antiquities.acacia_shelf_1.name=Acacia Cross Shelf
+tile.antiquities.dark_oak_shelf_1.name=Dark Oak Cross Shelf
+
+tile.antiquities.oak_shelf_2.name=Oak Long Shelf
+tile.antiquities.spruce_shelf_2.name=Spruce Long Shelf
+tile.antiquities.birch_shelf_2.name=Birch Long Shelf
+tile.antiquities.jungle_shelf_2.name=Jungle Long Shelf
+tile.antiquities.acacia_shelf_2.name=Acacia Long Shelf
+tile.antiquities.dark_oak_shelf_2.name=Dark Oak Long Shelf
