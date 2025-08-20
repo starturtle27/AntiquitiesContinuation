@@ -1,11 +1,15 @@
 package net.pufferlab.antiquities.client.models;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Constants;
+import net.pufferlab.antiquities.client.tessrender.ModelTESS;
 
 public class ModelChair extends ModelBase {
 
@@ -32,9 +36,14 @@ public class ModelChair extends ModelBase {
         bb_main.render(Constants.ModelConstant);
     }
 
+    public void render(RenderBlocks renderblocks, Tessellator tess, Block block, int meta, int x, int y, int z) {
+        bb_main.rotateAngleX = (float) Math.toRadians(180);
+        ModelTESS.render(renderblocks, tess, block, bb_main, Constants.ModelConstant, x, y, z, meta);
+    }
+
     public void bindTex(String fileName) {
         Minecraft.getMinecraft().renderEngine
-            .bindTexture(Antiquities.asResource("textures/models/" + fileName + ".png"));
+            .bindTexture(Antiquities.asResource("textures/blocks/" + fileName + ".png"));
     }
 
     public void setFacing(int meta) {

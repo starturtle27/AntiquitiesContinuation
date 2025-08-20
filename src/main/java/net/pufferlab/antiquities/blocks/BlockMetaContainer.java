@@ -19,6 +19,7 @@ public abstract class BlockMetaContainer extends BlockContainer {
     private String[] elements;
     private String[] elementsBlacklist;
     private IIcon[] icons;
+    private IIcon[] icons_model;
     private String name;
 
     protected BlockMetaContainer(Material material, String[] materials, String type, String[] blacklist) {
@@ -37,10 +38,12 @@ public abstract class BlockMetaContainer extends BlockContainer {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
         icons = new IIcon[elements.length];
+        icons_model = new IIcon[elements.length];
 
         for (int i = 0; i < elements.length; i++) {
             if (!Utils.containsExactMatch(elementsBlacklist, elements[i])) {
                 icons[i] = register.registerIcon("antiquities:" + elements[i]);
+                icons_model[i] = register.registerIcon("antiquities:" + elements[i] + "_" + name);
             }
         }
     }
@@ -58,6 +61,9 @@ public abstract class BlockMetaContainer extends BlockContainer {
     public IIcon getIcon(int side, int meta) {
         if (meta >= elements.length || Utils.containsExactMatch(elementsBlacklist, elements[meta])) {
             return null;
+        }
+        if (side == 99) {
+            return icons_model[meta];
         }
         return icons[meta];
     }
