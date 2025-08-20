@@ -9,18 +9,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.pufferlab.antiquities.blocks.BlockShelf;
-import net.pufferlab.antiquities.client.models.ModelShelf;
-import net.pufferlab.antiquities.client.models.ModelShelfFull;
-import net.pufferlab.antiquities.client.models.ModelShelfLong;
 import net.pufferlab.antiquities.tileentities.TileEntityShelf;
 
 import org.lwjgl.opengl.GL11;
 
 public class TileEntityShelfRenderer extends TileEntitySpecialRenderer {
 
-    ModelShelfFull model0 = new ModelShelfFull();
-    ModelShelf model1 = new ModelShelf();
-    ModelShelfLong model2 = new ModelShelfLong();
     private RenderManager renderManager = RenderManager.instance;
     private RenderItem itemRenderer = new RenderItem() {
 
@@ -43,15 +37,8 @@ public class TileEntityShelfRenderer extends TileEntitySpecialRenderer {
         TileEntityShelf shelf = (TileEntityShelf) tileEntity;
         Block block = world.getBlock(shelf.xCoord, shelf.yCoord, shelf.zCoord);
         if (!(block instanceof BlockShelf)) return;
-        BlockShelf block2 = (BlockShelf) block;
-        int metadata = world.getBlockMetadata(shelf.xCoord, shelf.yCoord, shelf.zCoord);
-        String wood = block2.getType(metadata);
 
         this.itemRenderer.setRenderManager(renderManager);
-
-        model0.setFacing(shelf.facingMeta);
-        model1.setFacing(shelf.facingMeta);
-        model2.setFacing(shelf.facingMeta);
 
         GL11.glEnable(GL11.GL_LIGHTING);
         ItemStack slot1 = shelf.getInventoryStack(0);
@@ -61,13 +48,6 @@ public class TileEntityShelfRenderer extends TileEntitySpecialRenderer {
 
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
-        if (block2.getShelfType() == 0) {
-            model0.render(wood);
-        } else if (block2.getShelfType() == 1) {
-            model1.render(wood);
-        } else if (block2.getShelfType() == 2) {
-            model2.render(wood);
-        }
         GL11.glPopMatrix();
         double x2 = x + 0.25F;
         double y2 = y + 0.15F;

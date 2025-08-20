@@ -39,11 +39,15 @@ public abstract class BlockMetaContainer extends BlockContainer {
     public void registerBlockIcons(IIconRegister register) {
         icons = new IIcon[elements.length];
         icons_model = new IIcon[elements.length];
+        String actualName = name;
+        if (name.equals("shelf_0") || name.equals("shelf_1") || name.equals("shelf_2")) {
+            actualName = "shelf";
+        }
 
         for (int i = 0; i < elements.length; i++) {
             if (!Utils.containsExactMatch(elementsBlacklist, elements[i])) {
                 icons[i] = register.registerIcon("antiquities:" + elements[i]);
-                icons_model[i] = register.registerIcon("antiquities:" + elements[i] + "_" + name);
+                icons_model[i] = register.registerIcon("antiquities:" + elements[i] + "_" + actualName);
             }
         }
     }
