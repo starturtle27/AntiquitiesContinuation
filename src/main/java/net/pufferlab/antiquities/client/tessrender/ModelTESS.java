@@ -255,23 +255,17 @@ public class ModelTESS {
 
                     TileEntityMetaFacing facing = (TileEntityMetaFacing) renderblocks.blockAccess
                         .getTileEntity(x, y, z);
-                    if ((facing.facingMeta == 1 && facing.getFacingType() == 1)
-                        || (facing.facingMeta == 3 && facing.getFacingType() == 0)) {
-                        renderblocks2.quadXNeg = 0;
-                        renderblocks2.quadXPos = 1;
-                        renderblocks2.quadYNeg = 2;
-                        renderblocks2.quadYPos = 3;
-                        renderblocks2.quadZNeg = 4;
-                        renderblocks2.quadZPos = 5;
-
-                    }
+                    renderblocks2.quadXNeg = 0;
+                    renderblocks2.quadXPos = 1;
+                    renderblocks2.quadYNeg = 2;
+                    renderblocks2.quadYPos = 3;
+                    renderblocks2.quadZNeg = 4;
+                    renderblocks2.quadZPos = 5;
 
                     if ((facing.facingMeta == 2 && facing.getFacingType() == 1)
                         || (facing.facingMeta == 4 && facing.getFacingType() == 0)) {
                         renderblocks2.quadXNeg = 4;
                         renderblocks2.quadXPos = 5;
-                        renderblocks2.quadYNeg = 2;
-                        renderblocks2.quadYPos = 3;
                         renderblocks2.quadZNeg = 0;
                         renderblocks2.quadZPos = 1;
                         renderblocks2.rotateYPos = 0;
@@ -283,8 +277,6 @@ public class ModelTESS {
                         || (facing.facingMeta == 1 && facing.getFacingType() == 0)) {
                         renderblocks2.quadXNeg = 1;
                         renderblocks2.quadXPos = 0;
-                        renderblocks2.quadYNeg = 2;
-                        renderblocks2.quadYPos = 3;
                         renderblocks2.quadZNeg = 5;
                         renderblocks2.quadZPos = 4;
                         renderblocks2.rotateYPos = 3;
@@ -295,8 +287,6 @@ public class ModelTESS {
                         || (facing.facingMeta == 2 && facing.getFacingType() == 0)) {
                         renderblocks2.quadXNeg = 5;
                         renderblocks2.quadXPos = 4;
-                        renderblocks2.quadYNeg = 2;
-                        renderblocks2.quadYPos = 3;
                         renderblocks2.quadZNeg = 1;
                         renderblocks2.quadZPos = 0;
                         renderblocks2.rotateYPos = 2;
@@ -304,7 +294,6 @@ public class ModelTESS {
                     }
 
                     renderblocks2.renderAllFaces = true;
-                    renderblocks2.field_152631_f = true;
                     renderblocks2.overrideBlockTexture = block.getIcon(99, meta);
                     renderblocks2.setRenderBounds(minX, minY, minZ, maxX, maxY, maxZ);
                     renderblocks2.renderStandardBlock(block, x, y, z);

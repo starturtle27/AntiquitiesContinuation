@@ -37,4 +37,8 @@ public class CommonProxy {
     public int getGlobeRenderID() {
         return 0;
     }
+
+    public int getJarRenderID() {
+        return 0;
+    }
 }

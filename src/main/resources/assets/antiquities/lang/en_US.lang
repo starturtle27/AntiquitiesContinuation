@@ -56,3 +56,10 @@ tile.antiquities.jungle_shelf_5.name=Jungle Long Shelf Case
 tile.antiquities.acacia_shelf_5.name=Acacia Long Shelf Case
 tile.antiquities.dark_oak_shelf_5.name=Dark Oak Long Shelf Case
 
+tile.antiquities.oak_jar.name=Oak Jar
+tile.antiquities.spruce_jar.name=Spruce Jar
+tile.antiquities.birch_jar.name=Birch Jar
+tile.antiquities.jungle_jar.name=Jungle Jar
+tile.antiquities.acacia_jar.name=Acacia Jar
+tile.antiquities.dark_oak_jar.name=Dark Oak Jar
+

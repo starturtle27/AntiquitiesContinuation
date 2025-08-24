@@ -20,6 +20,7 @@ public class Registry {
     public static Block shelf_3;
     public static Block shelf_4;
     public static Block shelf_5;
+    public static Block jar;
     public static Block globe;
 
     public void preInit(FMLPreInitializationEvent event) {
@@ -31,10 +32,12 @@ public class Registry {
         shelf_3 = new BlockShelf(3, Constants.woodTypes);
         shelf_4 = new BlockShelf(4, Constants.woodTypes);
         shelf_5 = new BlockShelf(5, Constants.woodTypes);
+        jar = new BlockJar(Constants.woodTypes);
         globe = new BlockGlobe();
         GameRegistry.registerTileEntity(TileEntityChair.class, "antiquities_chair");
         GameRegistry.registerTileEntity(TileEntityTable.class, "antiquities_table");
         GameRegistry.registerTileEntity(TileEntityShelf.class, "antiquities_shelf");
+        GameRegistry.registerTileEntity(TileEntityJar.class, "antiquities_jar");
         GameRegistry.registerTileEntity(TileEntityGlobe.class, "antiquities_globe");
 
         GameRegistry.registerBlock(chair, ItemBlockMeta.class, "chair");
@@ -45,6 +48,7 @@ public class Registry {
         GameRegistry.registerBlock(shelf_4, ItemBlockMeta.class, "shelf_4");
         GameRegistry.registerBlock(shelf_5, ItemBlockMeta.class, "shelf_5");
         GameRegistry.registerBlock(table, ItemBlockMeta.class, "table");
+        GameRegistry.registerBlock(jar, ItemBlockMeta.class, "jar");
         GameRegistry.registerBlock(globe, "globe");
     }
 
