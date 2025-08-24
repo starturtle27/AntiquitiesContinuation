@@ -51,7 +51,14 @@ tile.antiquities.dark_oak_shelf_4.name=深色橡木交叉储物架
 
 tile.antiquities.oak_shelf_5.name=橡木长储物架
 tile.antiquities.spruce_shelf_5.name=云杉木长储物架
-tile.antiquities.birch_shelf_5.name=白桦木长储物架
+tile.antiquities.birch_shelf_5.name=长储物架
 tile.antiquities.jungle_shelf_5.name=丛林木长储物架
 tile.antiquities.acacia_shelf_5.name=金合欢木长储物架
 tile.antiquities.dark_oak_shelf_5.name=深色橡木长储物架
+
+tile.antiquities.oak_jar.name=橡木储物罐
+tile.antiquities.spruce_jar.name=云杉木储物罐
+tile.antiquities.birch_jar.name=白桦木储物罐
+tile.antiquities.jungle_jar.name=丛林木储物罐
+tile.antiquities.acacia_jar.name=金合欢木储物罐
+tile.antiquities.dark_oak_jar.name=深色橡木储物罐
