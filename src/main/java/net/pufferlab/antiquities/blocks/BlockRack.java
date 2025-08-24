@@ -9,7 +9,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -19,30 +22,32 @@ import net.minecraft.world.World;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Constants;
 import net.pufferlab.antiquities.Utils;
-import net.pufferlab.antiquities.tileentities.TileEntityShelf;
+import net.pufferlab.antiquities.tileentities.TileEntityRack;
 
-public class BlockShelf extends BlockMetaContainer {
+public class BlockRack extends BlockMetaContainer {
 
-    private int elementType;
-
-    public BlockShelf(int shelfType, String... materials) {
-        super(Material.wood, materials, "shelf" + "_" + shelfType, Constants.none);
-
-        this.elementType = shelfType;
+    public BlockRack(String... materials) {
+        super(Material.wood, materials, "rack", Constants.none);
 
         this.setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
     }
 
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileEntityRack();
+    }
+
     public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
-        if (world.getTileEntity(x, y, z) instanceof TileEntityShelf shelf) {
-            if (shelf.facingMeta == 1) {
-                this.setBlockBounds(0.0F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F);
-            } else if (shelf.facingMeta == 2) {
-                this.setBlockBounds(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-            } else if (shelf.facingMeta == 3) {
-                this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
-            } else if (shelf.facingMeta == 4) {
-                this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
+        if (world.getTileEntity(x, y, z) instanceof TileEntityRack rack) {
+            float size = 0.125F;
+            if (rack.facingMeta == 1) {
+                this.setBlockBounds(0.0F, 0.0F, 1 - size, 1.0F, 1.0F, 1.0F);
+            } else if (rack.facingMeta == 2) {
+                this.setBlockBounds(1 - size, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            } else if (rack.facingMeta == 3) {
+                this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, size);
+            } else if (rack.facingMeta == 4) {
+                this.setBlockBounds(0.0F, 0.0F, 0.0F, size, 1.0F, 1.0F);
             } else {
                 this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
             }
@@ -56,15 +61,27 @@ public class BlockShelf extends BlockMetaContainer {
     }
 
     @Override
+    public void onBlockPlacedBy(World worldIn, int x, int y, int z, EntityLivingBase placer, ItemStack itemIn) {
+        super.onBlockPlacedBy(worldIn, x, y, z, placer, itemIn);
+
+        int yaw = MathHelper.floor_double((double) (placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        int metayaw = Utils.getDirectionXZYaw(yaw);
+        TileEntityRack rack = (TileEntityRack) worldIn.getTileEntity(x, y, z);
+        if (rack != null) {
+            rack.setFacingMeta(metayaw);
+        }
+    }
+
+    @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
         float hitY, float hitZ) {
         super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 
-        if (world.getTileEntity(x, y, z) instanceof TileEntityShelf shelf) {
+        if (world.getTileEntity(x, y, z) instanceof TileEntityRack rack) {
             ItemStack heldItem = player.getHeldItem();
             int slot = 0;
             int axis = 0;
-            int facing = shelf.facingMeta;
+            int facing = rack.facingMeta;
             if (facing == 1 || facing == 3) {
                 axis = 1;
             }
@@ -80,33 +97,32 @@ public class BlockShelf extends BlockMetaContainer {
             if (axis == 2) {
                 slot = getSlotFromFace(slotZ, slotY, facing);
             }
-            addItem(world, x, y, z, shelf, player, heldItem, (slot - 1), hitX, hitY, hitZ);
+            if (heldItem != null) {
+                if (!(heldItem.getItem() instanceof ItemTool) && !(heldItem.getItem() instanceof ItemSword)
+                    && !(heldItem.getItem() instanceof ItemHoe)) {
+                    return false;
+                }
+            }
+
+            addItem(world, x, y, z, rack, player, heldItem, slot);
             return true;
         }
         return false;
     }
 
     public int getSlotFromFace(float number1, float number2, float facing) {
-        boolean rowH = false;
-        boolean rowV = false;
         int slot = 3;
         if (facing == 1 || facing == 4) {
             number1 = 1 - number1;
         }
-        if (number1 < 0.5) {
-            rowH = true;
+        if (number1 < 0.33) {
+            return 0;
         }
-        if (number2 < 0.5) {
-            rowV = true;
+        if (number1 > 0.33 && number1 < 0.66) {
+            return 1;
         }
-        if (!rowV && rowH) {
-            slot = 1;
-        }
-        if (rowV && !rowH) {
-            slot = 4;
-        }
-        if (!rowV && !rowH) {
-            slot = 2;
+        if (number1 > 0.66) {
+            return 2;
         }
 
         return slot;
@@ -119,14 +135,14 @@ public class BlockShelf extends BlockMetaContainer {
         dropItems(worldIn, x, y, z);
     }
 
-    private void addItem(World world, int i, int j, int k, TileEntityShelf tileShelf, EntityPlayer player,
-        ItemStack playerhand, int slotNum, double hitX, double hitY, double hitZ) {
-        boolean stuffadd = tileShelf.addItemInSlot(slotNum, playerhand);
+    private void addItem(World world, int i, int j, int k, TileEntityRack tileRack, EntityPlayer player,
+        ItemStack playerhand, int slotNum) {
+        boolean stuffadd = tileRack.addItemInSlot(slotNum, playerhand);
         if (stuffadd) {
             player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
         } else {
-            dropItem(world, i, j, k, slotNum, hitX, hitY, hitZ);
-            tileShelf.removeItemsInSlot(slotNum);
+            dropItem(world, i, j, k, slotNum);
+            tileRack.removeItemsInSlot(slotNum);
         }
     }
 
@@ -161,28 +177,17 @@ public class BlockShelf extends BlockMetaContainer {
         }
     }
 
-    private boolean dropItem(World world, int x, int y, int z, int index, double hitX, double hitY, double hitZ) {
+    private boolean dropItem(World world, int x, int y, int z, int index) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         if (!(tileEntity instanceof IInventory)) return false;
-        TileEntityShelf shelf = (TileEntityShelf) tileEntity;
-        ItemStack item = shelf.getInventoryStack(index);
-        int facing = shelf.facingMeta;
-        double hitN = 0.25;
-        if (facing == 3 || facing == 4) {
-            hitN = 0.75;
-        }
-        if (facing == 1 || facing == 3) {
-            hitZ = hitN;
-        }
-        if (facing == 2 || facing == 4) {
-            hitX = hitN;
-        }
+        TileEntityRack rack = (TileEntityRack) tileEntity;
+        ItemStack item = rack.getInventoryStack(index);
         if (item != null && item.stackSize > 0) {
             EntityItem entityItem = new EntityItem(
                 world,
-                x + hitX,
-                y + hitY,
-                z + hitZ,
+                x + 0.5,
+                y + 0.5,
+                z + 0.5,
                 new ItemStack(item.getItem(), item.stackSize, item.getItemDamage()));
             if (item.hasTagCompound()) entityItem.getEntityItem()
                 .setTagCompound(
@@ -198,31 +203,10 @@ public class BlockShelf extends BlockMetaContainer {
         return false;
     }
 
-    @Override
-    public void onBlockPlacedBy(World worldIn, int x, int y, int z, EntityLivingBase placer, ItemStack itemIn) {
-        super.onBlockPlacedBy(worldIn, x, y, z, placer, itemIn);
-
-        int yaw = MathHelper.floor_double((double) (placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-        int metayaw = Utils.getDirectionXZYaw(yaw);
-        TileEntityShelf shelf = (TileEntityShelf) worldIn.getTileEntity(x, y, z);
-        if (shelf != null) {
-            shelf.setFacingMeta(metayaw);
-        }
-    }
-
     public void spawnEntityClientSensitive(World world, Entity entityItem) {
         if (!world.isRemote) {
             world.spawnEntityInWorld((Entity) entityItem);
         }
-    }
-
-    public int getShelfType() {
-        return this.elementType;
-    }
-
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityShelf();
     }
 
     @Override
@@ -242,6 +226,6 @@ public class BlockShelf extends BlockMetaContainer {
 
     @Override
     public int getRenderType() {
-        return Antiquities.proxy.getShelfRenderID();
+        return Antiquities.proxy.getRackRenderID();
     }
 }

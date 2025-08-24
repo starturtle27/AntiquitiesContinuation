@@ -41,4 +41,8 @@ public class CommonProxy {
     public int getJarRenderID() {
         return 0;
     }
+
+    public int getRackRenderID() {
+        return 0;
+    }
 }

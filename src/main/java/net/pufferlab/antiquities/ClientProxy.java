@@ -1,10 +1,7 @@
 package net.pufferlab.antiquities;
 
 import net.pufferlab.antiquities.client.renderer.*;
-import net.pufferlab.antiquities.tileentities.TileEntityGlobe;
-import net.pufferlab.antiquities.tileentities.TileEntityJar;
-import net.pufferlab.antiquities.tileentities.TileEntityShelf;
-import net.pufferlab.antiquities.tileentities.TileEntityTable;
+import net.pufferlab.antiquities.tileentities.*;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -16,12 +13,14 @@ public class ClientProxy extends CommonProxy {
     int shelfRenderID;
     int globeRenderID;
     int jarRenderID;
+    int rackRenderID;
 
     @Override
     public void registerRenders() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTable.class, new TileEntityTableRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShelf.class, new TileEntityShelfRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJar.class, new TileEntityJarRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRack.class, new TileEntityRackRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlobe.class, new TileEntityGlobeRenderer());
 
         chairRenderID = RenderingRegistry.getNextAvailableRenderId();
@@ -34,6 +33,8 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerBlockHandler(new BlockGlobeRender(globeRenderID));
         jarRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new BlockJarRender(jarRenderID));
+        rackRenderID = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(new BlockRackRender(rackRenderID));
     }
 
     @Override
@@ -59,5 +60,10 @@ public class ClientProxy extends CommonProxy {
     @Override
     public int getJarRenderID() {
         return jarRenderID;
+    }
+
+    @Override
+    public int getRackRenderID() {
+        return rackRenderID;
     }
 }

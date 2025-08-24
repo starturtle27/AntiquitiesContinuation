@@ -63,3 +63,9 @@ tile.antiquities.jungle_jar.name=Jungle Jar
 tile.antiquities.acacia_jar.name=Acacia Jar
 tile.antiquities.dark_oak_jar.name=Dark Oak Jar
 
+tile.antiquities.oak_rack.name=Oak Tool Rack
+tile.antiquities.spruce_rack.name=Spruce Tool Rack
+tile.antiquities.birch_rack.name=Birch Tool Rack
+tile.antiquities.jungle_rack.name=Jungle Tool Rack
+tile.antiquities.acacia_rack.name=Acacia Tool Rack
+tile.antiquities.dark_oak_rack.name=Dark Oak Tool Rack
