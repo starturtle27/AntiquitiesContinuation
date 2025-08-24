@@ -27,6 +27,11 @@ public class TileEntityShelf extends TileEntityMetaFacing implements IInventory 
         return this.shelfInventory;
     }
 
+    @Override
+    public int getFacingType() {
+        return 0;
+    }
+
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
 

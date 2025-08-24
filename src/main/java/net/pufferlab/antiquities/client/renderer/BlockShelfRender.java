@@ -5,9 +5,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
 import net.pufferlab.antiquities.blocks.BlockShelf;
-import net.pufferlab.antiquities.client.models.ModelShelf;
-import net.pufferlab.antiquities.client.models.ModelShelfFull;
-import net.pufferlab.antiquities.client.models.ModelShelfLong;
+import net.pufferlab.antiquities.client.models.*;
 import net.pufferlab.antiquities.tileentities.TileEntityShelf;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -17,6 +15,9 @@ public class BlockShelfRender implements ISimpleBlockRenderingHandler {
     ModelShelfFull model0 = new ModelShelfFull();
     ModelShelf model1 = new ModelShelf();
     ModelShelfLong model2 = new ModelShelfLong();
+    ModelShelfFullCase model3 = new ModelShelfFullCase();
+    ModelShelfCase model4 = new ModelShelfCase();
+    ModelShelfLongCase model5 = new ModelShelfLongCase();
     final int renderID;
 
     public BlockShelfRender(int blockComplexRenderID) {
@@ -30,6 +31,9 @@ public class BlockShelfRender implements ISimpleBlockRenderingHandler {
         model0.setFacing(0);
         model1.setFacing(0);
         model2.setFacing(0);
+        model3.setFacing(0);
+        model4.setFacing(0);
+        model5.setFacing(0);
 
         if (block2.getShelfType() == 0) {
             model0.render(wood);
@@ -37,6 +41,13 @@ public class BlockShelfRender implements ISimpleBlockRenderingHandler {
             model1.render(wood);
         } else if (block2.getShelfType() == 2) {
             model2.render(wood);
+        }
+        if (block2.getShelfType() == 3) {
+            model3.render(wood);
+        } else if (block2.getShelfType() == 4) {
+            model4.render(wood);
+        } else if (block2.getShelfType() == 5) {
+            model5.render(wood);
         }
     }
 
@@ -51,6 +62,9 @@ public class BlockShelfRender implements ISimpleBlockRenderingHandler {
         model0.setFacing(shelf.facingMeta);
         model1.setFacing(shelf.facingMeta);
         model2.setFacing(shelf.facingMeta);
+        model3.setFacing(shelf.facingMeta);
+        model4.setFacing(shelf.facingMeta);
+        model5.setFacing(shelf.facingMeta);
 
         if (block2.getShelfType() == 0) {
             model0.render(renderer, tess, block, meta, x, y, z);
@@ -59,6 +73,14 @@ public class BlockShelfRender implements ISimpleBlockRenderingHandler {
         } else if (block2.getShelfType() == 2) {
             model2.render(renderer, tess, block, meta, x, y, z);
         }
+        if (block2.getShelfType() == 3) {
+            model3.render(renderer, tess, block, meta, x, y, z);
+        } else if (block2.getShelfType() == 4) {
+            model4.render(renderer, tess, block, meta, x, y, z);
+        } else if (block2.getShelfType() == 5) {
+            model5.render(renderer, tess, block, meta, x, y, z);
+        }
+
         return true;
     }
 

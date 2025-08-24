@@ -11,17 +11,20 @@ import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Constants;
 import net.pufferlab.antiquities.client.tessrender.ModelTESS;
 
-public class ModelShelfFull extends ModelBase {
+public class ModelShelfFullCase extends ModelBase {
 
     private final ModelRenderer bb_main;
 
-    public ModelShelfFull() {
+    public ModelShelfFullCase() {
         textureWidth = 64;
         textureHeight = 64;
 
         bb_main = new ModelRenderer(this);
         setFacing(0);
         bb_main.setRotationPoint(0.0F, 0.0F, 0.0F);
+        bb_main.cubeList.add(new ModelBox(bb_main, 2, 0, -7.0F, -15.0F + 8F, 6.0F, 14, 6, 2, 0.0F));
+        bb_main.cubeList.add(new ModelBox(bb_main, 2, 0, -7.0F, -7.0F + 8F, 6.0F, 14, 6, 2, 0.0F));
+
         bb_main.cubeList.add(new ModelBox(bb_main, 0, 28, -8.0F, -7.0F + 8F, 0.0F, 1, 6, 8, 0.0F));
         bb_main.cubeList.add(new ModelBox(bb_main, 0, 28, -8.0F, -15.0F + 8F, 0.0F, 1, 6, 8, 0.0F));
         bb_main.cubeList.add(new ModelBox(bb_main, 1, 28, 7.0F, -15.0F + 8F, 0.0F, 1, 6, 8, 0.0F));

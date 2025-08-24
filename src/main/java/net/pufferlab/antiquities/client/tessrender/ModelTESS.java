@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.Vec3;
+import net.pufferlab.antiquities.tileentities.TileEntityMetaFacing;
 
 public class ModelTESS {
 
@@ -20,16 +21,35 @@ public class ModelTESS {
             // Render children first
             if (renderer.childModels != null) {
                 for (int i = 0; i < renderer.childModels.size(); ++i) {
-                    render(
-                        renderblocks,
-                        tess,
-                        block,
-                        (ModelRenderer) renderer.childModels.get(i),
-                        scale,
-                        x,
-                        y,
-                        z,
-                        meta);
+                    ModelRenderer child = (ModelRenderer) renderer.childModels.get(i);
+
+                    // Backup child state
+                    float oldRotateX = child.rotateAngleX;
+                    float oldRotateY = child.rotateAngleY;
+                    float oldRotateZ = child.rotateAngleZ;
+                    float oldPivotX = child.rotationPointX;
+                    float oldPivotY = child.rotationPointY;
+                    float oldPivotZ = child.rotationPointZ;
+
+                    // Apply parent rotation/pivot to child
+                    child.rotateAngleX += renderer.rotateAngleX;
+                    child.rotateAngleY += renderer.rotateAngleY;
+                    child.rotateAngleZ += renderer.rotateAngleZ;
+
+                    child.rotationPointX += renderer.rotationPointX;
+                    child.rotationPointY += renderer.rotationPointY;
+                    child.rotationPointZ += renderer.rotationPointZ;
+
+                    // Recurse
+                    render(renderblocks, tess, block, child, scale, x, y, z, meta);
+
+                    // Restore child state
+                    child.rotateAngleX = oldRotateX;
+                    child.rotateAngleY = oldRotateY;
+                    child.rotateAngleZ = oldRotateZ;
+                    child.rotationPointX = oldPivotX;
+                    child.rotationPointY = oldPivotY;
+                    child.rotationPointZ = oldPivotZ;
                 }
             }
 
@@ -141,5 +161,193 @@ public class ModelTESS {
                 }
             }
         }
+    }
+
+    public static void renderBlock(RenderBlocks renderblocks, Tessellator tess, Block block, ModelRenderer renderer,
+        float scale, int x, int y, int z, int meta) {
+        if (!renderer.isHidden && renderer.showModel) {
+
+            // Render children first
+            if (renderer.childModels != null) {
+                for (int i = 0; i < renderer.childModels.size(); ++i) {
+                    ModelRenderer child = (ModelRenderer) renderer.childModels.get(i);
+
+                    // Backup child state
+                    float oldRotateX = child.rotateAngleX;
+                    float oldRotateY = child.rotateAngleY;
+                    float oldRotateZ = child.rotateAngleZ;
+                    float oldPivotX = child.rotationPointX;
+                    float oldPivotY = child.rotationPointY;
+                    float oldPivotZ = child.rotationPointZ;
+
+                    // Apply parent rotation/pivot to child
+                    child.rotateAngleX += renderer.rotateAngleX;
+                    child.rotateAngleY += renderer.rotateAngleY;
+                    child.rotateAngleZ += renderer.rotateAngleZ;
+
+                    child.rotationPointX += renderer.rotationPointX;
+                    child.rotationPointY += renderer.rotationPointY;
+                    child.rotationPointZ += renderer.rotationPointZ;
+
+                    // Recurse
+                    render(renderblocks, tess, block, child, scale, x, y, z, meta);
+
+                    // Restore child state
+                    child.rotateAngleX = oldRotateX;
+                    child.rotateAngleY = oldRotateY;
+                    child.rotateAngleZ = oldRotateZ;
+                    child.rotationPointX = oldPivotX;
+                    child.rotationPointY = oldPivotY;
+                    child.rotationPointZ = oldPivotZ;
+                }
+            }
+
+            if (renderer.cubeList != null) {
+                for (int i = 0; i < renderer.cubeList.size(); ++i) {
+                    ModelBox box = renderer.cubeList.get(i);
+
+                    // --- Rotation angles (cos/sin) ---
+                    double x1 = box.posX1 * scale;
+                    double x2 = box.posX2 * scale;
+                    double y1 = box.posY1 * scale;
+                    double y2 = box.posY2 * scale;
+                    double z1 = box.posZ1 * scale;
+                    double z2 = box.posZ2 * scale;
+
+                    // Rotate all 8 corners
+                    double[][] corners = new double[][] { rotate(renderer, x1, y1, z1), rotate(renderer, x2, y1, z1),
+                        rotate(renderer, x1, y2, z1), rotate(renderer, x2, y2, z1), rotate(renderer, x1, y1, z2),
+                        rotate(renderer, x2, y1, z2), rotate(renderer, x1, y2, z2), rotate(renderer, x2, y2, z2) };
+
+                    // Now compute true min/max after rotation
+                    double minX = Double.POSITIVE_INFINITY, minY = Double.POSITIVE_INFINITY,
+                        minZ = Double.POSITIVE_INFINITY;
+                    double maxX = Double.NEGATIVE_INFINITY, maxY = Double.NEGATIVE_INFINITY,
+                        maxZ = Double.NEGATIVE_INFINITY;
+
+                    for (double[] c : corners) {
+                        if (c[0] < minX) minX = c[0];
+                        if (c[0] > maxX) maxX = c[0];
+                        if (c[1] < minY) minY = c[1];
+                        if (c[1] > maxY) maxY = c[1];
+                        if (c[2] < minZ) minZ = c[2];
+                        if (c[2] > maxZ) maxZ = c[2];
+                    }
+
+                    CustomRenderBlocks renderblocks2 = new CustomRenderBlocks();
+
+                    renderblocks2.modelbox = box;
+                    renderblocks2.modelrenderer = renderer;
+                    renderblocks2.blockAccess = renderblocks.blockAccess;
+
+                    renderblocks2.vertex1 = 0;
+                    renderblocks2.vertex2 = 1;
+                    renderblocks2.vertex3 = 2;
+                    renderblocks2.vertex4 = 3;
+
+                    renderblocks2.rotateYPos = 1;
+                    renderblocks2.rotateYNeg = 3;
+                    renderblocks2.rotateXPos = 2;
+                    renderblocks2.rotateXNeg = 0;
+                    renderblocks2.rotateZNeg = 0;
+                    renderblocks2.rotateZPos = 3;
+                    renderblocks2.mirrorText = true;
+
+                    TileEntityMetaFacing facing = (TileEntityMetaFacing) renderblocks.blockAccess
+                        .getTileEntity(x, y, z);
+                    if ((facing.facingMeta == 1 && facing.getFacingType() == 1)
+                        || (facing.facingMeta == 3 && facing.getFacingType() == 0)) {
+                        renderblocks2.quadXNeg = 0;
+                        renderblocks2.quadXPos = 1;
+                        renderblocks2.quadYNeg = 2;
+                        renderblocks2.quadYPos = 3;
+                        renderblocks2.quadZNeg = 4;
+                        renderblocks2.quadZPos = 5;
+
+                    }
+
+                    if ((facing.facingMeta == 2 && facing.getFacingType() == 1)
+                        || (facing.facingMeta == 4 && facing.getFacingType() == 0)) {
+                        renderblocks2.quadXNeg = 4;
+                        renderblocks2.quadXPos = 5;
+                        renderblocks2.quadYNeg = 2;
+                        renderblocks2.quadYPos = 3;
+                        renderblocks2.quadZNeg = 0;
+                        renderblocks2.quadZPos = 1;
+                        renderblocks2.rotateYPos = 0;
+                        renderblocks2.rotateYNeg = 2;
+
+                    }
+
+                    if ((facing.facingMeta == 3 && facing.getFacingType() == 1)
+                        || (facing.facingMeta == 1 && facing.getFacingType() == 0)) {
+                        renderblocks2.quadXNeg = 1;
+                        renderblocks2.quadXPos = 0;
+                        renderblocks2.quadYNeg = 2;
+                        renderblocks2.quadYPos = 3;
+                        renderblocks2.quadZNeg = 5;
+                        renderblocks2.quadZPos = 4;
+                        renderblocks2.rotateYPos = 3;
+                        renderblocks2.rotateYNeg = 1;
+                    }
+
+                    if ((facing.facingMeta == 4 && facing.getFacingType() == 1)
+                        || (facing.facingMeta == 2 && facing.getFacingType() == 0)) {
+                        renderblocks2.quadXNeg = 5;
+                        renderblocks2.quadXPos = 4;
+                        renderblocks2.quadYNeg = 2;
+                        renderblocks2.quadYPos = 3;
+                        renderblocks2.quadZNeg = 1;
+                        renderblocks2.quadZPos = 0;
+                        renderblocks2.rotateYPos = 2;
+                        renderblocks2.rotateYNeg = 0;
+                    }
+
+                    renderblocks2.renderAllFaces = true;
+                    renderblocks2.field_152631_f = true;
+                    renderblocks2.overrideBlockTexture = block.getIcon(99, meta);
+                    renderblocks2.setRenderBounds(minX, minY, minZ, maxX, maxY, maxZ);
+                    renderblocks2.renderStandardBlock(block, x, y, z);
+                    renderblocks2.uvRotateEast = 0;
+                    renderblocks2.uvRotateWest = 0;
+                    renderblocks2.uvRotateSouth = 0;
+                    renderblocks2.uvRotateNorth = 0;
+                    renderblocks2.uvRotateTop = 0;
+                    renderblocks2.uvRotateBottom = 0;
+                }
+            }
+        }
+    }
+
+    public static double[] rotate(ModelRenderer renderer, double x, double y, double z) {
+        double cosX = Math.cos(renderer.rotateAngleX), sinX = Math.sin(renderer.rotateAngleX);
+        double cosY = Math.cos(renderer.rotateAngleY), sinY = Math.sin(renderer.rotateAngleY);
+        double cosZ = Math.cos(renderer.rotateAngleZ), sinZ = Math.sin(renderer.rotateAngleZ);
+        double px = renderer.rotationPointX, py = renderer.rotationPointY, pz = renderer.rotateAngleZ;
+
+        // Step 1: translate so pivot is origin
+        x -= px;
+        y -= py;
+        z -= pz;
+
+        // Step 2: rotate (same as before)
+        // Rotate around X
+        double y1 = y * cosX - z * sinX;
+        double z1 = y * sinX + z * cosX;
+
+        // Rotate around Y
+        double x2 = x * cosY + z1 * sinY;
+        double z2 = -x * sinY + z1 * cosY;
+
+        // Rotate around Z
+        double x3 = x2 * cosZ - y1 * sinZ;
+        double y3 = x2 * sinZ + y1 * cosZ;
+
+        // Step 3: translate back
+        x3 += px;
+        y3 += py;
+        z2 += pz;
+
+        return new double[] { x3 + 0.5, y3 + 0.5, z2 + 0.5 };
     }
 }

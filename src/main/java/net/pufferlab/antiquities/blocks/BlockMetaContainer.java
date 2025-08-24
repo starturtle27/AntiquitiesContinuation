@@ -40,7 +40,11 @@ public abstract class BlockMetaContainer extends BlockContainer {
         icons = new IIcon[elements.length];
         icons_model = new IIcon[elements.length];
         String actualName = name;
-        if (name.equals("shelf_0") || name.equals("shelf_1") || name.equals("shelf_2")) {
+        if (name.equals("shelf_0") || name.equals("shelf_1")
+            || name.equals("shelf_2")
+            || name.equals("shelf_3")
+            || name.equals("shelf_4")
+            || name.equals("shelf_5")) {
             actualName = "shelf";
         }
 

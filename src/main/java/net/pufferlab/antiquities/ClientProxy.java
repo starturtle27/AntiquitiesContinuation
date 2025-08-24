@@ -1,7 +1,6 @@
 package net.pufferlab.antiquities;
 
 import net.pufferlab.antiquities.client.renderer.*;
-import net.pufferlab.antiquities.tileentities.TileEntityChair;
 import net.pufferlab.antiquities.tileentities.TileEntityGlobe;
 import net.pufferlab.antiquities.tileentities.TileEntityShelf;
 import net.pufferlab.antiquities.tileentities.TileEntityTable;
@@ -18,7 +17,6 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerRenders() {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChair.class, new TileEntityChairRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTable.class, new TileEntityTableRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShelf.class, new TileEntityShelfRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlobe.class, new TileEntityGlobeRenderer());

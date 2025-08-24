@@ -10,6 +10,10 @@ public class TileEntityMetaFacing extends TileEntity {
 
     public int facingMeta;
 
+    public int getFacingType() {
+        return 0;
+    }
+
     @Override
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);

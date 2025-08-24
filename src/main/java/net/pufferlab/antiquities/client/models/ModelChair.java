@@ -38,7 +38,9 @@ public class ModelChair extends ModelBase {
 
     public void render(RenderBlocks renderblocks, Tessellator tess, Block block, int meta, int x, int y, int z) {
         bb_main.rotateAngleX = (float) Math.toRadians(180);
-        ModelTESS.render(renderblocks, tess, block, bb_main, Constants.ModelConstant, x, y, z, meta);
+        // ModelTESS.render(renderblocks, tess, block, bb_main, Constants.ModelConstant, x, y, z, meta);
+
+        ModelTESS.renderBlock(renderblocks, tess, block, bb_main, Constants.ModelConstant, x, y, z, meta);
     }
 
     public void bindTex(String fileName) {

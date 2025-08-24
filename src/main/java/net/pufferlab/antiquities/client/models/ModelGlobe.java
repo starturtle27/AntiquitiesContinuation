@@ -39,20 +39,20 @@ public class ModelGlobe extends ModelBase {
     }
 
     public void render() {
-        bindTex("globe");
+        bindTex("globe_model");
         bb_main.rotateAngleX = (float) Math.toRadians(180);
         bb_main.render(Constants.ModelConstant);
     }
 
     public void renderGlobe() {
-        bindTex("globe");
+        bindTex("globe_model");
         earth_r1.rotateAngleX = (float) Math.toRadians(180);
         earth_r1.render(Constants.ModelConstant);
     }
 
     public void bindTex(String fileName) {
         Minecraft.getMinecraft().renderEngine
-            .bindTexture(Antiquities.asResource("textures/models/" + fileName + ".png"));
+            .bindTexture(Antiquities.asResource("textures/blocks/" + fileName + ".png"));
     }
 
     public void setFacing(int meta) {
