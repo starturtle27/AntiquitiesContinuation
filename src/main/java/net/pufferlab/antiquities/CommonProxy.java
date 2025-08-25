@@ -20,9 +20,7 @@ public class CommonProxy {
 
     public void postInit(FMLPostInitializationEvent event) {}
 
-    public void serverStarting(FMLServerStartingEvent event) {
-        Config.refreshWhitelists();
-    }
+    public void serverStarting(FMLServerStartingEvent event) {}
 
     public int getChairRenderID() {
         return 0;
@@ -45,6 +43,10 @@ public class CommonProxy {
     }
 
     public int getRackRenderID() {
+        return 0;
+    }
+
+    public int getClockRenderID() {
         return 0;
     }
 }

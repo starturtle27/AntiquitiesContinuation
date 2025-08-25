@@ -1,14 +1,13 @@
 package net.pufferlab.antiquities;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class Config {
 
-    public static ArrayList<ItemStack> toolRackWhitelistIS = new ArrayList<ItemStack>();
     public static String greeting = "Hello World";
     public static float globeMaxSpeed;
     public static float globeSpeedAddition;
@@ -58,9 +57,8 @@ public class Config {
     public static void refreshWhitelists() {
         for (String item : toolRackWhitelist) {
             ItemStack itemstack = Utils.getItem(item + ":*:*");
-            toolRackWhitelistIS.clear();
             if (itemstack != null) {
-                toolRackWhitelistIS.add(itemstack);
+                OreDictionary.registerOre("itemTool", itemstack);
             }
         }
     }

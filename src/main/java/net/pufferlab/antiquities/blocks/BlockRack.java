@@ -21,7 +21,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.pufferlab.antiquities.Antiquities;
-import net.pufferlab.antiquities.Config;
 import net.pufferlab.antiquities.Constants;
 import net.pufferlab.antiquities.Utils;
 import net.pufferlab.antiquities.tileentities.TileEntityRack;
@@ -100,11 +99,9 @@ public class BlockRack extends BlockMetaContainer {
                 slot = getSlotFromFace(slotZ, slotY, facing);
             }
             if (heldItem != null) {
-                for (ItemStack item : Config.toolRackWhitelistIS) {
-                    if (Utils.containsStack(item, heldItem)) {
-                        addItem(world, x, y, z, rack, player, heldItem, slot);
-                        return true;
-                    }
+                if (Utils.containsOreDict(heldItem, "tool")) {
+                    addItem(world, x, y, z, rack, player, heldItem, slot);
+                    return true;
                 }
 
                 if (!(heldItem.getItem() instanceof ItemTool) && !(heldItem.getItem() instanceof ItemSword)

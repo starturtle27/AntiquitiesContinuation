@@ -118,4 +118,13 @@ public class Utils {
         }
         return false;
     }
+
+    public static boolean containsOreDict(ItemStack b, String oreDict) {
+        for (int id1 : OreDictionary.getOreIDs(b)) {
+            if (id1 == OreDictionary.getOreID(oreDict)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

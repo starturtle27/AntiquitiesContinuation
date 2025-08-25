@@ -303,6 +303,7 @@ public class ModelTESS {
                     renderblocks2.uvRotateNorth = 0;
                     renderblocks2.uvRotateTop = 0;
                     renderblocks2.uvRotateBottom = 0;
+                    renderblocks2.renderAllFaces = false;
                 }
             }
         }

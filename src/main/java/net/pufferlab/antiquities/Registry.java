@@ -23,6 +23,7 @@ public class Registry {
     public static Block jar;
     public static Block rack;
     public static Block globe;
+    public static Block clock;
 
     public void preInit(FMLPreInitializationEvent event) {
         chair = new BlockChair(Constants.woodTypes);
@@ -36,12 +37,14 @@ public class Registry {
         jar = new BlockJar(Constants.woodTypes);
         rack = new BlockRack(Constants.woodTypes);
         globe = new BlockGlobe();
+        clock = new BlockClock();
         GameRegistry.registerTileEntity(TileEntityChair.class, "antiquities_chair");
         GameRegistry.registerTileEntity(TileEntityTable.class, "antiquities_table");
         GameRegistry.registerTileEntity(TileEntityShelf.class, "antiquities_shelf");
         GameRegistry.registerTileEntity(TileEntityJar.class, "antiquities_jar");
         GameRegistry.registerTileEntity(TileEntityRack.class, "antiquities_rack");
         GameRegistry.registerTileEntity(TileEntityGlobe.class, "antiquities_globe");
+        GameRegistry.registerTileEntity(TileEntityClock.class, "antiquities_clock");
 
         GameRegistry.registerBlock(chair, ItemBlockMeta.class, "chair");
         GameRegistry.registerBlock(shelf_0, ItemBlockMeta.class, "shelf");
@@ -54,6 +57,7 @@ public class Registry {
         GameRegistry.registerBlock(jar, ItemBlockMeta.class, "jar");
         GameRegistry.registerBlock(rack, ItemBlockMeta.class, "rack");
         GameRegistry.registerBlock(globe, "globe");
+        GameRegistry.registerBlock(clock, "clock");
     }
 
     public void init() {
