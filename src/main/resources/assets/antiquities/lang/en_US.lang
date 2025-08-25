@@ -69,3 +69,5 @@ tile.antiquities.birch_rack.name=Birch Tool Rack
 tile.antiquities.jungle_rack.name=Jungle Tool Rack
 tile.antiquities.acacia_rack.name=Acacia Tool Rack
 tile.antiquities.dark_oak_rack.name=Dark Oak Tool Rack
+
+tile.antiquities.clock.name=Clock

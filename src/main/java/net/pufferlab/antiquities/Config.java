@@ -58,7 +58,7 @@ public class Config {
         for (String item : toolRackWhitelist) {
             ItemStack itemstack = Utils.getItem(item + ":*:*");
             if (itemstack != null) {
-                OreDictionary.registerOre("itemTool", itemstack);
+                OreDictionary.registerOre("tool", itemstack);
             }
         }
     }
