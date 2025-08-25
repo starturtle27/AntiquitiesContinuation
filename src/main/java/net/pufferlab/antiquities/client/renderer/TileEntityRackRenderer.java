@@ -15,6 +15,8 @@ import org.lwjgl.opengl.GL11;
 
 public class TileEntityRackRenderer extends TileEntitySpecialRenderer {
 
+    public EntityItem slotEntity;
+
     private RenderManager renderManager = RenderManager.instance;
     private RenderItem itemRenderer = new RenderItem() {
 
@@ -106,7 +108,7 @@ public class TileEntityRackRenderer extends TileEntitySpecialRenderer {
     public void renderSlotItem(ItemStack stack, double xAdjust, double yAdjust, double zAdjust, int facing) {
         GL11.glPushMatrix();
         if (stack != null) {
-            EntityItem slotEntity = new EntityItem(null, 0.0D, 0.0D, 0.0D, stack);
+            slotEntity = new EntityItem(null, 0.0D, 0.0D, 0.0D, stack);
             slotEntity.hoverStart = 0.0F;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glTranslated(xAdjust, yAdjust, zAdjust);
