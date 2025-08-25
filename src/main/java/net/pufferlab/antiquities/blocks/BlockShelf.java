@@ -3,6 +3,7 @@ package net.pufferlab.antiquities.blocks;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -79,6 +80,12 @@ public class BlockShelf extends BlockMetaContainer {
             }
             if (axis == 2) {
                 slot = getSlotFromFace(slotZ, slotY, facing);
+            }
+
+            if (heldItem != null) {
+                if (Block.getBlockFromItem(heldItem.getItem()) instanceof BlockShelf) {
+                    return false;
+                }
             }
             addItem(world, x, y, z, shelf, player, heldItem, (slot - 1), hitX, hitY, hitZ);
             return true;

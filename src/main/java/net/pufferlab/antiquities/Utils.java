@@ -1,6 +1,44 @@
 package net.pufferlab.antiquities;
 
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class Utils {
+
+    public static ItemStack getItem(String mod, String item, int meta, int number) {
+        if (GameRegistry.findItem(mod, item) != null) {
+            return new ItemStack(GameRegistry.findItem(mod, item), number, meta);
+        } else if (GameRegistry.findBlock(mod, item) != null) {
+            return new ItemStack(GameRegistry.findBlock(mod, item), number, meta);
+        }
+        return null;
+    }
+
+    public static ItemStack getItem(String s) {
+        String[] array = s.split(":");
+        String mod = array[0];
+        String item = array[1];
+        int meta = 0;
+        if (array.length > 2) {
+            if (array[2].equals("*")) {
+                meta = OreDictionary.WILDCARD_VALUE;
+            } else {
+                meta = Integer.parseInt(array[2]);
+            }
+        }
+        int number = 1;
+        if (array.length > 3) {
+            if (array[3].equals("*")) {
+                number = OreDictionary.WILDCARD_VALUE;
+            } else {
+                number = Integer.parseInt(array[3]);
+            }
+        }
+
+        return getItem(mod, item, meta, number);
+    }
 
     public static int getDirectionXZ(int side) {
         if (side == 2) {
@@ -64,6 +102,19 @@ public class Utils {
             if (element.equals(targetString)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean containsStack(ItemStack wild, ItemStack check) {
+        if (wild == null || check == null) {
+            return check == wild;
+        }
+
+        if (wild.getItem() == check.getItem() && (wild.getItemDamage() == OreDictionary.WILDCARD_VALUE
+            || check.getItemDamage() == OreDictionary.WILDCARD_VALUE
+            || wild.getItemDamage() == check.getItemDamage())) {
+            return true;
         }
         return false;
     }

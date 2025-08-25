@@ -1,15 +1,20 @@
 package net.pufferlab.antiquities;
 
 import java.io.File;
+import java.util.ArrayList;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 
 public class Config {
 
+    public static ArrayList<ItemStack> toolRackWhitelistIS = new ArrayList<ItemStack>();
     public static String greeting = "Hello World";
     public static float globeMaxSpeed;
     public static float globeSpeedAddition;
     public static float globeSpeedDeceleration;
+    public static String[] toolRackWhitelist;
+    public static String[] toolRackDefaultWhitelist;
 
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
@@ -36,9 +41,27 @@ public class Config {
             0F,
             10F,
             "The speed that the globe decelerate every tick.");
+        toolRackDefaultWhitelist = new String[] { "ForgeMicroblock:sawIron", "ForgeMicroblock:sawDiamond",
+            "ForgeMicroblock:sawGold", "ForgeMicroblock:sawFlint", "ForgeMicroblock:sawBronze",
+            "ForgeMicroblock:sawSteel", "ForgeMicroblock:sawManasteel", "ForgeMicroblock:sawThaumium" };
+        toolRackWhitelist = configuration.getStringList(
+            "toolRackWhitelist",
+            Configuration.CATEGORY_GENERAL,
+            toolRackDefaultWhitelist,
+            "Add items that the toolrack should treat as tools");
 
         if (configuration.hasChanged()) {
             configuration.save();
+        }
+    }
+
+    public static void refreshWhitelists() {
+        for (String item : toolRackWhitelist) {
+            ItemStack itemstack = Utils.getItem(item + ":*:*");
+            toolRackWhitelistIS.clear();
+            if (itemstack != null) {
+                toolRackWhitelistIS.add(itemstack);
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package net.pufferlab.antiquities.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -49,6 +50,12 @@ public class BlockJar extends BlockMetaContainer {
 
         if (world.getTileEntity(x, y, z) instanceof TileEntityJar jar) {
             ItemStack heldItem = player.getHeldItem();
+
+            if (heldItem != null) {
+                if (Block.getBlockFromItem(heldItem.getItem()) instanceof BlockJar) {
+                    return false;
+                }
+            }
 
             addItem(world, x, y, z, jar, player, heldItem, 0);
             return true;

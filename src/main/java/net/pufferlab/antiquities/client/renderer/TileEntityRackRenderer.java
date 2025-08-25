@@ -53,12 +53,16 @@ public class TileEntityRackRenderer extends TileEntitySpecialRenderer {
         double offsetZ = 0.0F;
         double offsetX2 = -0.33F;
         double offsetZ2 = 0.1F;
+        double offsetX3 = -0.05F;
+        double offsetZ3 = 0.0F;
         if (rack.facingMeta == 2) {
             x2 = x + 0.75F;
             offsetX = 0.0F;
             offsetZ = -0.33F;
             offsetX2 = 0.1F;
             offsetZ2 = 0.33F;
+            offsetX3 = 0.0F;
+            offsetZ3 = 0.05F;
         }
         if (rack.facingMeta == 3) {
             x2 = x + 0.75F;
@@ -66,6 +70,8 @@ public class TileEntityRackRenderer extends TileEntitySpecialRenderer {
             offsetX = -0.33F;
             offsetX2 = 0.33F;
             offsetZ2 = -0.1F;
+            offsetX3 = 0.05F;
+            offsetZ3 = 0.0F;
         }
         if (rack.facingMeta == 4) {
             x2 = x + 0.25F;
@@ -74,12 +80,14 @@ public class TileEntityRackRenderer extends TileEntitySpecialRenderer {
             offsetZ = 0.33F;
             offsetX2 = -0.1F;
             offsetZ2 = -0.33F;
+            offsetX3 = 0.0F;
+            offsetZ3 = -0.05F;
         }
         renderSlotItem(
             slot3,
-            x2 + offsetX + offsetX2 - 0.001,
+            x2 + offsetX + offsetX2 - offsetX3 - 0.001,
             y2 + offsetY,
-            z2 + offsetZ + offsetZ2 - 0.001,
+            z2 + offsetZ + offsetZ2 - offsetZ3 - 0.001,
             rack.facingMeta);
         renderSlotItem(
             slot2,
@@ -89,9 +97,9 @@ public class TileEntityRackRenderer extends TileEntitySpecialRenderer {
             rack.facingMeta);
         renderSlotItem(
             slot1,
-            x2 + (offsetX * 3) + offsetX2 + 0.001,
+            x2 + (offsetX * 3) + offsetX2 + offsetX3 + 0.001,
             y2 + offsetY,
-            z2 + (offsetZ * 3) + offsetZ2 + 0.001,
+            z2 + (offsetZ * 3) + offsetZ2 + offsetZ3 + 0.001,
             rack.facingMeta);
     }
 
