@@ -49,4 +49,8 @@ public class CommonProxy {
     public int getClockRenderID() {
         return 0;
     }
+
+    public int getPedestalRenderID() {
+        return 0;
+    }
 }

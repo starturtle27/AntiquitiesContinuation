@@ -15,6 +15,7 @@ public class ClientProxy extends CommonProxy {
     int jarRenderID;
     int rackRenderID;
     int clockRenderID;
+    int pedestalRenderID;
 
     @Override
     public void registerRenders() {
@@ -22,6 +23,7 @@ public class ClientProxy extends CommonProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShelf.class, new TileEntityShelfRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJar.class, new TileEntityJarRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRack.class, new TileEntityRackRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new TileEntityPedestalRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlobe.class, new TileEntityGlobeRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityClock.class, new TileEntityClockRenderer());
 
@@ -39,6 +41,8 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerBlockHandler(new BlockRackRender(rackRenderID));
         clockRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new BlockClockRender(clockRenderID));
+        pedestalRenderID = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(new BlockPedestalRender(pedestalRenderID));
     }
 
     @Override
@@ -74,5 +78,10 @@ public class ClientProxy extends CommonProxy {
     @Override
     public int getClockRenderID() {
         return clockRenderID;
+    }
+
+    @Override
+    public int getPedestalRenderID() {
+        return pedestalRenderID;
     }
 }

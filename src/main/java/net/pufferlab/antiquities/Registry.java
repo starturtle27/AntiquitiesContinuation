@@ -22,6 +22,7 @@ public class Registry {
     public static Block shelf_5;
     public static Block jar;
     public static Block rack;
+    public static Block pedestal;
     public static Block globe;
     public static Block clock;
 
@@ -36,6 +37,7 @@ public class Registry {
         shelf_5 = new BlockShelf(5, Constants.woodTypes);
         jar = new BlockJar(Constants.woodTypes);
         rack = new BlockRack(Constants.woodTypes);
+        pedestal = new BlockPedestal(Constants.stoneTypes);
         globe = new BlockGlobe();
         clock = new BlockClock();
         GameRegistry.registerTileEntity(TileEntityChair.class, "antiquities_chair");
@@ -43,6 +45,7 @@ public class Registry {
         GameRegistry.registerTileEntity(TileEntityShelf.class, "antiquities_shelf");
         GameRegistry.registerTileEntity(TileEntityJar.class, "antiquities_jar");
         GameRegistry.registerTileEntity(TileEntityRack.class, "antiquities_rack");
+        GameRegistry.registerTileEntity(TileEntityPedestal.class, "antiquities_pedestal");
         GameRegistry.registerTileEntity(TileEntityGlobe.class, "antiquities_globe");
         GameRegistry.registerTileEntity(TileEntityClock.class, "antiquities_clock");
 
@@ -56,6 +59,7 @@ public class Registry {
         GameRegistry.registerBlock(table, ItemBlockMeta.class, "table");
         GameRegistry.registerBlock(jar, ItemBlockMeta.class, "jar");
         GameRegistry.registerBlock(rack, ItemBlockMeta.class, "rack");
+        GameRegistry.registerBlock(pedestal, ItemBlockMeta.class, "pedestal");
         GameRegistry.registerBlock(globe, "globe");
         GameRegistry.registerBlock(clock, "clock");
     }
