@@ -53,4 +53,8 @@ public class CommonProxy {
     public int getPedestalRenderID() {
         return 0;
     }
+
+    public int getPileRenderID() {
+        return 0;
+    }
 }

@@ -119,6 +119,24 @@ public class Utils {
         return false;
     }
 
+    public static String getItemFromArray(String[] array, String[] blockArray, String targetString) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(targetString)) {
+                return blockArray[i];
+            }
+        }
+        return null;
+    }
+
+    public static int getItemFromArray(String[] woodType, String wood) {
+        for (int i = 0; i < woodType.length; i++) {
+            if (woodType[i].equals(wood)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
     public static boolean containsOreDict(ItemStack b, String oreDict) {
         for (int id1 : OreDictionary.getOreIDs(b)) {
             if (id1 == OreDictionary.getOreID(oreDict)) {

@@ -1,6 +1,7 @@
 package net.pufferlab.antiquities;
 
 import net.minecraft.util.ResourceLocation;
+import net.pufferlab.antiquities.events.EventHandler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,6 +23,7 @@ public class Antiquities {
         clientSide = "net.pufferlab.antiquities.ClientProxy",
         serverSide = "net.pufferlab.antiquities.CommonProxy")
     public static CommonProxy proxy;
+    public static EventHandler eventHandler = new EventHandler();
 
     public static Registry registry = new Registry();
 
@@ -39,6 +41,8 @@ public class Antiquities {
         proxy.init(event);
 
         registry.init();
+        // MinecraftForge.EVENT_BUS.register(eventHandler);
+
         proxy.registerRenders();
     }
 

@@ -25,6 +25,7 @@ public class Registry {
     public static Block pedestal;
     public static Block globe;
     public static Block clock;
+    public static Block pile;
 
     public void preInit(FMLPreInitializationEvent event) {
         chair = new BlockChair(Constants.woodTypes);
@@ -40,6 +41,7 @@ public class Registry {
         pedestal = new BlockPedestal(Constants.stoneTypes);
         globe = new BlockGlobe();
         clock = new BlockClock();
+        pile = new BlockPile();
         GameRegistry.registerTileEntity(TileEntityChair.class, "antiquities_chair");
         GameRegistry.registerTileEntity(TileEntityTable.class, "antiquities_table");
         GameRegistry.registerTileEntity(TileEntityShelf.class, "antiquities_shelf");
@@ -48,6 +50,7 @@ public class Registry {
         GameRegistry.registerTileEntity(TileEntityPedestal.class, "antiquities_pedestal");
         GameRegistry.registerTileEntity(TileEntityGlobe.class, "antiquities_globe");
         GameRegistry.registerTileEntity(TileEntityClock.class, "antiquities_clock");
+        GameRegistry.registerTileEntity(TileEntityPile.class, "antiquities_pile");
 
         GameRegistry.registerBlock(chair, ItemBlockMeta.class, "chair");
         GameRegistry.registerBlock(shelf_0, ItemBlockMeta.class, "shelf");
@@ -62,6 +65,7 @@ public class Registry {
         GameRegistry.registerBlock(pedestal, ItemBlockMeta.class, "pedestal");
         GameRegistry.registerBlock(globe, "globe");
         GameRegistry.registerBlock(clock, "clock");
+        GameRegistry.registerBlock(pile, "pile");
     }
 
     public void init() {
