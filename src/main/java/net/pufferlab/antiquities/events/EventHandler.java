@@ -3,10 +3,7 @@ package net.pufferlab.antiquities.events;
 import static net.minecraftforge.event.entity.player.PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -28,7 +25,7 @@ public class EventHandler {
             for (int oreID : oreIDS) {
                 String oreName = OreDictionary.getOreName(oreID);
                 if (oreName.contains("ingot")) {
-                    if(!(event.world.getBlock(event.x, event.y, event.z) instanceof BlockPile)) {
+                    if (!(event.world.getBlock(event.x, event.y, event.z) instanceof BlockPile)) {
                         canPlace = true;
                     } else {
                         canAdd = true;
@@ -41,11 +38,20 @@ public class EventHandler {
                 int z2 = Utils.getBlockZ(event.face, event.z);
                 place(heldItem, event.world, x2, y2, z2, Registry.pile, 0, event);
             }
-            if(canAdd) {
-                if(event.entityPlayer.isSneaking()) {
+            if (canAdd) {
+                if (event.entityPlayer.isSneaking()) {
                     Block block = event.world.getBlock(event.x, event.y, event.z);
                     for (int i = 0; i < heldItem.stackSize; i++) {
-                        block.onBlockActivated(event.world, event.x, event.y, event.z, event.entityPlayer, event.face, 0.5F, 0.5F, 0.5F);
+                        block.onBlockActivated(
+                            event.world,
+                            event.x,
+                            event.y,
+                            event.z,
+                            event.entityPlayer,
+                            event.face,
+                            0.5F,
+                            0.5F,
+                            0.5F);
                     }
                 }
             }

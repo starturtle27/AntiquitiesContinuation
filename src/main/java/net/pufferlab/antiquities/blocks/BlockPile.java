@@ -22,8 +22,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Utils;
@@ -80,7 +78,7 @@ public class BlockPile extends BlockContainer {
         super.onNeighborBlockChange(worldIn, x, y, z, neighbor);
 
         Block block = worldIn.getBlock(x, y, z);
-        if(worldIn.isAirBlock(x, y - 1, z)) {
+        if (worldIn.isAirBlock(x, y - 1, z)) {
             worldIn.setBlockToAir(x, y, z);
             block.onBlockPreDestroy(worldIn, x, y, z, worldIn.getBlockMetadata(x, y, z));
         }
@@ -122,7 +120,6 @@ public class BlockPile extends BlockContainer {
                     }
                 }
 
-
                 return true;
             }
 
@@ -133,10 +130,12 @@ public class BlockPile extends BlockContainer {
     public void addItemToPile(ItemStack heldItem, TileEntityPile pile, EntityPlayer player) {
         if (pile.canAddItemInPile()) {
             pile.addItemInPile(heldItem);
-            if(heldItem.stackSize > 0) {
+            if (heldItem.stackSize > 0) {
                 player.getHeldItem().stackSize--;
             } else {
-                player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(Item.getItemFromBlock(Blocks.air)));
+                player.inventory.setInventorySlotContents(
+                    player.inventory.currentItem,
+                    new ItemStack(Item.getItemFromBlock(Blocks.air)));
             }
         }
     }
