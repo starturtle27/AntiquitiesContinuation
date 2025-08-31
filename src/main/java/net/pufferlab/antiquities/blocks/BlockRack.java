@@ -38,6 +38,7 @@ public class BlockRack extends BlockMetaContainer {
         return new TileEntityRack();
     }
 
+    @Override
     public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
         if (world.getTileEntity(x, y, z) instanceof TileEntityRack rack) {
             float size = 0.125F;

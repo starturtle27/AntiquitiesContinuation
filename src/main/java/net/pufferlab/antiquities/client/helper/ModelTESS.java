@@ -1,4 +1,4 @@
-package net.pufferlab.antiquities.client.tessrender;
+package net.pufferlab.antiquities.client.helper;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBox;
@@ -118,7 +118,7 @@ public class ModelTESS {
                         tess.setColorOpaque_F(f * shade, f1 * shade, f2 * shade);
 
                         // --- Texture ---
-                        IIcon icon = block.getIcon(99, meta);
+                        IIcon icon = renderblocks.getBlockIcon(block, renderblocks.blockAccess, x, y, z, 99);
 
                         // --- Add rotated vertices ---
                         for (int p = 0; p < 4; ++p) {

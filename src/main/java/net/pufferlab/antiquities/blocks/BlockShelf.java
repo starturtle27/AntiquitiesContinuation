@@ -34,6 +34,7 @@ public class BlockShelf extends BlockMetaContainer {
         this.setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
     }
 
+    @Override
     public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
         if (world.getTileEntity(x, y, z) instanceof TileEntityShelf shelf) {
             if (shelf.facingMeta == 1) {
@@ -50,6 +51,7 @@ public class BlockShelf extends BlockMetaContainer {
         }
     }
 
+    @Override
     public void addCollisionBoxesToList(World worldIn, int x, int y, int z, AxisAlignedBB mask,
         List<AxisAlignedBB> list, Entity collider) {
         this.setBlockBoundsBasedOnState(worldIn, x, y, z);

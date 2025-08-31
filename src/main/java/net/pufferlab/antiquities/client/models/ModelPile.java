@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Constants;
 import net.pufferlab.antiquities.Utils;
-import net.pufferlab.antiquities.client.tessrender.ModelTESS;
+import net.pufferlab.antiquities.client.helper.ModelTESS;
 
 public class ModelPile extends ModelBase {
 
@@ -19,8 +19,8 @@ public class ModelPile extends ModelBase {
     private ModelRenderer layer1;
 
     public ModelPile() {
-        textureWidth = 32;
-        textureHeight = 32;
+        textureWidth = 64;
+        textureHeight = 64;
 
         bb_main = new ModelRenderer(this);
         bb_main.setRotationPoint(0.0F, 0.0F, 0.0F);

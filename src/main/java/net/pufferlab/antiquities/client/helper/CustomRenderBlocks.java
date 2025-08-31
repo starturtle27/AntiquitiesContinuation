@@ -1,4 +1,4 @@
-package net.pufferlab.antiquities.client.tessrender;
+package net.pufferlab.antiquities.client.helper;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBox;

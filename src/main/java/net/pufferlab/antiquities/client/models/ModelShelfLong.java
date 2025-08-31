@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Constants;
-import net.pufferlab.antiquities.client.tessrender.ModelTESS;
+import net.pufferlab.antiquities.client.helper.ModelTESS;
 
 public class ModelShelfLong extends ModelBase {
 

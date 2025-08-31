@@ -179,11 +179,9 @@ public class TileEntityInventory extends TileEntityMetaFacing implements IInvent
     }
 
     public void setInventorySlotContentsUpdate(int index, ItemStack stack) {
-        this.inventory[index] = stack;
-
-        if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-            stack.stackSize = this.getInventoryStackLimit();
-        }
+        ItemStack copy = stack.copy();
+        copy.stackSize = getInventoryStackLimit();
+        this.inventory[index] = copy;
         this.worldObj.markBlockRangeForRenderUpdate(
             this.xCoord,
             this.yCoord,
