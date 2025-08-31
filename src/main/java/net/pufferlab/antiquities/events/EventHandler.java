@@ -5,6 +5,7 @@ import static net.minecraftforge.event.entity.player.PlayerInteractEvent.Action.
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.pufferlab.antiquities.Registry;
@@ -60,7 +61,7 @@ public class EventHandler {
 
     private void place(ItemStack stack, World world, int x, int y, int z, Block toPlace, int metadata,
         PlayerInteractEvent event) {
-        if (world.isAirBlock(x, y, z) && !world.isAirBlock(x, y - 1, z)) {
+        if (world.isAirBlock(x, y, z) && world.isSideSolid(x, y - 1, z, ForgeDirection.UP)) {
             if (world.checkNoEntityCollision(toPlace.getCollisionBoundingBoxFromPool(world, x, y, z))
                 && world.setBlock(x, y, z, toPlace, metadata, 3)) {
                 world.setBlock(x, y, z, toPlace, metadata, 2);

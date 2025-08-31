@@ -22,6 +22,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.OreDictionary;
 import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Utils;
@@ -74,11 +75,23 @@ public class BlockPile extends BlockContainer {
     }
 
     @Override
+    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
+        TileEntity te = world.getTileEntity(x, y, z);
+        if (te instanceof TileEntityPile) {
+            TileEntityPile pile = (TileEntityPile) te;
+            if (pile.getNextSlot() == -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void onNeighborBlockChange(World worldIn, int x, int y, int z, Block neighbor) {
         super.onNeighborBlockChange(worldIn, x, y, z, neighbor);
 
         Block block = worldIn.getBlock(x, y, z);
-        if (worldIn.isAirBlock(x, y - 1, z)) {
+        if (!worldIn.isSideSolid(x, y - 1, z, ForgeDirection.UP)) {
             worldIn.setBlockToAir(x, y, z);
             block.onBlockPreDestroy(worldIn, x, y, z, worldIn.getBlockMetadata(x, y, z));
         }
@@ -104,6 +117,7 @@ public class BlockPile extends BlockContainer {
                 if (player.isSneaking()) {
                     m = heldItem.stackSize;
                 }
+                playStepSound(world, x, y, z);
                 for (int i = 0; i < m; i++) {
                     if (!pile.canAddItemInPile()) {
                         int j = getNextPile(world, x, y, z);
@@ -127,6 +141,16 @@ public class BlockPile extends BlockContainer {
         return false;
     }
 
+    public void playStepSound(World world, int x, int y, int z) {
+        world.playSoundEffect(
+            x + 0.5f,
+            y + 0.5f,
+            z + 0.5f,
+            this.stepSound.func_150496_b(),
+            (this.stepSound.getVolume() + 1.0F) / 2.0F,
+            this.stepSound.getPitch() * 0.8F);
+    }
+
     public void addItemToPile(ItemStack heldItem, TileEntityPile pile, EntityPlayer player) {
         if (pile.canAddItemInPile()) {
             pile.addItemInPile(heldItem);
@@ -142,14 +166,17 @@ public class BlockPile extends BlockContainer {
 
     public int getNextPile(World world, int x, int y, int z) {
         for (int j = 0; j < 10; j++) {
-            TileEntityPile pile2 = (TileEntityPile) world.getTileEntity(x, y + j, z);
-            if (pile2 != null) {
+            TileEntity te = world.getTileEntity(x, y + j, z);
+            if (te instanceof TileEntityPile) {
+                TileEntityPile pile2 = (TileEntityPile) te;
                 if (pile2.getNextSlot() != -1) {
                     return j;
                 }
-            } else {
+            }
+            if (te == null) {
                 return j;
             }
+
         }
         return 0;
     }

@@ -2,11 +2,13 @@ package net.pufferlab.antiquities;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.pufferlab.antiquities.client.compat.NEIConfig;
 import net.pufferlab.antiquities.events.EventHandler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -27,6 +29,7 @@ public class Antiquities {
     public static EventHandler eventHandler = new EventHandler();
 
     public static Registry registry = new Registry();
+    public static NEIConfig neiConfig = new NEIConfig();
 
     @Mod.Instance(Antiquities.MODID)
     public static Antiquities instance;
@@ -42,6 +45,9 @@ public class Antiquities {
         proxy.init(event);
 
         registry.init();
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            neiConfig.loadConfig();
+        }
         MinecraftForge.EVENT_BUS.register(eventHandler);
 
         proxy.registerRenders();
