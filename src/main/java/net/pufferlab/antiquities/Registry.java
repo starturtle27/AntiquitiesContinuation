@@ -34,6 +34,18 @@ public class Registry {
     public static Block shelf_5_bop;
     public static Block jar_bop;
     public static Block rack_bop;
+
+    public static Block chair_tc;
+    public static Block table_tc;
+    public static Block shelf_0_tc;
+    public static Block shelf_1_tc;
+    public static Block shelf_2_tc;
+    public static Block shelf_3_tc;
+    public static Block shelf_4_tc;
+    public static Block shelf_5_tc;
+    public static Block jar_tc;
+    public static Block rack_tc;
+
     public static Block pedestal;
     public static Block globe;
     public static Block clock;
@@ -62,6 +74,18 @@ public class Registry {
             shelf_5_bop = new BlockShelf(5, Constants.bopWoodTypes);
             jar_bop = new BlockJar(Constants.bopWoodTypes);
             rack_bop = new BlockRack(Constants.bopWoodTypes);
+        }
+        if (Loader.isModLoaded("Thaumcraft")) {
+            chair_tc = new BlockChair(Constants.thaumcraftWoodTypes);
+            table_tc = new BlockTable(Constants.thaumcraftWoodTypes);
+            shelf_0_tc = new BlockShelf(0, Constants.thaumcraftWoodTypes);
+            shelf_1_tc = new BlockShelf(1, Constants.thaumcraftWoodTypes);
+            shelf_2_tc = new BlockShelf(2, Constants.thaumcraftWoodTypes);
+            shelf_3_tc = new BlockShelf(3, Constants.thaumcraftWoodTypes);
+            shelf_4_tc = new BlockShelf(4, Constants.thaumcraftWoodTypes);
+            shelf_5_tc = new BlockShelf(5, Constants.thaumcraftWoodTypes);
+            jar_tc = new BlockJar(Constants.thaumcraftWoodTypes);
+            rack_tc = new BlockRack(Constants.thaumcraftWoodTypes);
         }
         pedestal = new BlockPedestal(Constants.stoneTypes);
         globe = new BlockGlobe();
@@ -99,6 +123,19 @@ public class Registry {
             register(table_bop, "table_bop");
             register(jar_bop, "jar_bop");
             register(rack_bop, "rack_bop");
+        }
+
+        if (Loader.isModLoaded("Thaumcraft")) {
+            register(chair_tc, "chair_tc");
+            register(shelf_0_tc, "shelf_tc");
+            register(shelf_1_tc, "shelf_tc_1");
+            register(shelf_2_tc, "shelf_tc_2");
+            register(shelf_3_tc, "shelf_tc_3");
+            register(shelf_4_tc, "shelf_tc_4");
+            register(shelf_5_tc, "shelf_tc_5");
+            register(table_tc, "table_tc");
+            register(jar_tc, "jar_tc");
+            register(rack_tc, "rack_tc");
         }
 
         register(pedestal, "pedestal");

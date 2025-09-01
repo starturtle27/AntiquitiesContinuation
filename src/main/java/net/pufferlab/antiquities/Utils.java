@@ -8,6 +8,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Utils {
 
+    public static String getCapitalized(String string) {
+        String[] stringArray = string.split("");
+        stringArray[0] = stringArray[0].toUpperCase();
+        string = String.join("", stringArray);
+
+        return string;
+    }
+
     public static ItemStack getItem(String mod, String item, int meta, int number) {
         if (GameRegistry.findItem(mod, item) != null) {
             return new ItemStack(GameRegistry.findItem(mod, item), number, meta);

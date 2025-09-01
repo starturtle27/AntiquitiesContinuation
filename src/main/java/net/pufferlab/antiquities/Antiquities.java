@@ -6,6 +6,7 @@ import net.pufferlab.antiquities.client.compat.NEIConfig;
 import net.pufferlab.antiquities.events.EventHandler;
 import net.pufferlab.antiquities.recipes.Recipes;
 import net.pufferlab.antiquities.recipes.RecipesBOP;
+import net.pufferlab.antiquities.recipes.RecipesTC;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -60,6 +61,9 @@ public class Antiquities {
         new Recipes().run();
         if (Loader.isModLoaded("BiomesOPlenty")) {
             new RecipesBOP().run();
+        }
+        if (Loader.isModLoaded("Thaumcraft")) {
+            new RecipesTC().run();
         }
         Config.refreshWhitelists();
     }

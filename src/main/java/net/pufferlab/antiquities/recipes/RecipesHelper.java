@@ -76,6 +76,7 @@ public class RecipesHelper {
 
     public ItemStack getModItem(String name, String wood, int number) {
         boolean isVanillaWood = Utils.containsExactMatch(Constants.woodTypes, wood);
+        boolean isTCWood = Utils.containsExactMatch(Constants.thaumcraftWoodTypes, wood);
         boolean isBopWood = Utils.containsExactMatch(Constants.bopWoodTypes, wood);
 
         if (name.equals("planks")) {
@@ -96,6 +97,8 @@ public class RecipesHelper {
                 return Utils.getItem("BiomesOPlenty", wood + "Stairs", 0, number);
             } else if (isVanillaWood) {
                 return Utils.getItem("minecraft", wood + "_stairs", 0, number);
+            } else if (isTCWood) {
+                return Utils.getItem("Thaumcraft", "blockStairs" + Utils.getCapitalized(wood), 0, number);
             }
         } else {
             return new ItemStack(

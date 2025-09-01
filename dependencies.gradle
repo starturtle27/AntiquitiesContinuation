@@ -37,6 +37,7 @@ dependencies {
     api fileTree(dir: 'libs', include: '*.jar')
 
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:Angelica:1.0.0-beta44:dev")
-
+    api "thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev"
+    
     api("com.github.GTNewHorizons:NotEnoughItems:2.7.69-GTNH:dev")
 }
