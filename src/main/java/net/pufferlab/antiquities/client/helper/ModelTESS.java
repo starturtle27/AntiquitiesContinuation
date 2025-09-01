@@ -118,7 +118,7 @@ public class ModelTESS {
                         tess.setColorOpaque_F(f * shade, f1 * shade, f2 * shade);
 
                         // --- Texture ---
-                        IIcon icon = renderblocks.getBlockIcon(block, renderblocks.blockAccess, x, y, z, 99);
+                        IIcon icon = block.getIcon(99, meta);
 
                         // --- Add rotated vertices ---
                         for (int p = 0; p < 4; ++p) {
