@@ -39,7 +39,7 @@ public class BlockPile extends BlockContainer {
     public BlockPile() {
         super(Material.iron);
         this.setStepSound(soundTypeMetal);
-        this.setBlockName("antiquities.pile");
+        this.setBlockName(Antiquities.MODID + ".pile");
     }
 
     @Override

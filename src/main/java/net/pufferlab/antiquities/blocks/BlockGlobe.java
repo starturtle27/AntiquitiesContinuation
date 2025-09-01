@@ -27,7 +27,7 @@ public class BlockGlobe extends BlockContainer {
         this.setHardness(2.0F);
         this.setResistance(5.0F);
         this.setStepSound(soundTypeWood);
-        this.setBlockName("antiquities.globe");
+        this.setBlockName(Antiquities.MODID + ".globe");
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockBounds(0.1F, 0F, 0.1F, 0.9F, 1F, 0.9F);
     }
@@ -59,7 +59,7 @@ public class BlockGlobe extends BlockContainer {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
         icons = new IIcon[1];
-        icons[0] = register.registerIcon("antiquities:globe");
+        icons[0] = register.registerIcon(Antiquities.MODID + ":globe");
     }
 
     @SideOnly(Side.CLIENT)

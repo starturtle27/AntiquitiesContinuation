@@ -7,12 +7,42 @@ tile.antiquities.jungle_chair.name=Jungle Chair
 tile.antiquities.acacia_chair.name=Acacia Chair
 tile.antiquities.dark_oak_chair.name=Dark Oak Chair
 
+tile.antiquities.sacredoak_chair.name=Sacred Oak Chair
+tile.antiquities.cherry_chair.name=Cherry Chair
+tile.antiquities.dark_chair.name=Dark Chair
+tile.antiquities.fir_chair.name=Fir Chair
+tile.antiquities.ethereal_chair.name=Ethereal Chair
+tile.antiquities.magic_chair.name=Magic Chair
+tile.antiquities.mangrove_chair.name=Mangrove Chair
+tile.antiquities.palm_chair.name=Palm Chair
+tile.antiquities.redwood_chair.name=Redwood Chair
+tile.antiquities.willow_chair.name=Willow Chair
+tile.antiquities.pine_chair.name=Pine Chair
+tile.antiquities.hellbark_chair.name=Hellbark Chair
+tile.antiquities.jacaranda_chair.name=Jacaranda Chair
+tile.antiquities.mahogany_chair.name=Mahogany Chair
+
 tile.antiquities.oak_table.name=Oak Table
 tile.antiquities.spruce_table.name=Spruce Table
 tile.antiquities.birch_table.name=Birch Table
 tile.antiquities.jungle_table.name=Jungle Table
 tile.antiquities.acacia_table.name=Acacia Table
 tile.antiquities.dark_oak_table.name=Dark Oak Table
+
+tile.antiquities.sacredoak_table.name=Sacred Oak Table
+tile.antiquities.cherry_table.name=Cherry Table
+tile.antiquities.dark_table.name=Dark Table
+tile.antiquities.fir_table.name=Fir Table
+tile.antiquities.ethereal_table.name=Ethereal Table
+tile.antiquities.magic_table.name=Magic Table
+tile.antiquities.mangrove_table.name=Mangrove Table
+tile.antiquities.palm_table.name=Palm Table
+tile.antiquities.redwood_table.name=Redwood Table
+tile.antiquities.willow_table.name=Willow Table
+tile.antiquities.pine_table.name=Pine Table
+tile.antiquities.hellbark_table.name=Hellbark Table
+tile.antiquities.jacaranda_table.name=Jacaranda Table
+tile.antiquities.mahogany_table.name=Mahogany Table
 
 tile.antiquities.oak_shelf_0.name=Oak Shelf
 tile.antiquities.spruce_shelf_0.name=Spruce Shelf
@@ -21,12 +51,42 @@ tile.antiquities.jungle_shelf_0.name=Jungle Shelf
 tile.antiquities.acacia_shelf_0.name=Acacia Shelf
 tile.antiquities.dark_oak_shelf_0.name=Dark Oak Shelf
 
+tile.antiquities.sacredoak_shelf_0.name=Sacred Oak Shelf
+tile.antiquities.cherry_shelf_0.name=Cherry Shelf
+tile.antiquities.dark_shelf_0.name=Dark Shelf
+tile.antiquities.fir_shelf_0.name=Fir Shelf
+tile.antiquities.ethereal_shelf_0.name=Ethereal Shelf
+tile.antiquities.magic_shelf_0.name=Magic Shelf
+tile.antiquities.mangrove_shelf_0.name=Mangrove Shelf
+tile.antiquities.palm_shelf_0.name=Palm Shelf
+tile.antiquities.redwood_shelf_0.name=Redwood Shelf
+tile.antiquities.willow_shelf_0.name=Willow Shelf
+tile.antiquities.pine_shelf_0.name=Pine Shelf
+tile.antiquities.hellbark_shelf_0.name=Hellbark Shelf
+tile.antiquities.jacaranda_shelf_0.name=Jacaranda Shelf
+tile.antiquities.mahogany_shelf_0.name=Mahogany Shelf
+
 tile.antiquities.oak_shelf_1.name=Oak Cross Shelf
 tile.antiquities.spruce_shelf_1.name=Spruce Cross Shelf
 tile.antiquities.birch_shelf_1.name=Birch Cross Shelf
 tile.antiquities.jungle_shelf_1.name=Jungle Cross Shelf
 tile.antiquities.acacia_shelf_1.name=Acacia Cross Shelf
 tile.antiquities.dark_oak_shelf_1.name=Dark Oak Cross Shelf
+
+tile.antiquities.sacredoak_shelf_1.name=Sacred Oak Cross Shelf
+tile.antiquities.cherry_shelf_1.name=Cherry Cross Shelf
+tile.antiquities.dark_shelf_1.name=Dark Cross Shelf
+tile.antiquities.fir_shelf_1.name=Fir Cross Shelf
+tile.antiquities.ethereal_shelf_1.name=Ethereal Cross Shelf
+tile.antiquities.magic_shelf_1.name=Magic Cross Shelf
+tile.antiquities.mangrove_shelf_1.name=Mangrove Cross Shelf
+tile.antiquities.palm_shelf_1.name=Palm Cross Shelf
+tile.antiquities.redwood_shelf_1.name=Redwood Cross Shelf
+tile.antiquities.willow_shelf_1.name=Willow Cross Shelf
+tile.antiquities.pine_shelf_1.name=Pine Cross Shelf
+tile.antiquities.hellbark_shelf_1.name=Hellbark Cross Shelf
+tile.antiquities.jacaranda_shelf_1.name=Jacaranda Cross Shelf
+tile.antiquities.mahogany_shelf_1.name=Mahogany Cross Shelf
 
 tile.antiquities.oak_shelf_2.name=Oak Long Shelf
 tile.antiquities.spruce_shelf_2.name=Spruce Long Shelf
@@ -35,12 +95,42 @@ tile.antiquities.jungle_shelf_2.name=Jungle Long Shelf
 tile.antiquities.acacia_shelf_2.name=Acacia Long Shelf
 tile.antiquities.dark_oak_shelf_2.name=Dark Oak Long Shelf
 
+tile.antiquities.sacredoak_shelf_2.name=Sacred Oak Long Shelf
+tile.antiquities.cherry_shelf_2.name=Cherry Long Shelf
+tile.antiquities.dark_shelf_2.name=Dark Long Shelf
+tile.antiquities.fir_shelf_2.name=Fir Long Shelf
+tile.antiquities.ethereal_shelf_2.name=Ethereal Long Shelf
+tile.antiquities.magic_shelf_2.name=Magic Long Shelf
+tile.antiquities.mangrove_shelf_2.name=Mangrove Long Shelf
+tile.antiquities.palm_shelf_2.name=Palm Long Shelf
+tile.antiquities.redwood_shelf_2.name=Redwood Long Shelf
+tile.antiquities.willow_shelf_2.name=Willow Long Shelf
+tile.antiquities.pine_shelf_2.name=Pine Long Shelf
+tile.antiquities.hellbark_shelf_2.name=Hellbark Long Shelf
+tile.antiquities.jacaranda_shelf_2.name=Jacaranda Long Shelf
+tile.antiquities.mahogany_shelf_2.name=Mahogany Long Shelf
+
 tile.antiquities.oak_shelf_3.name=Oak Shelf Case
 tile.antiquities.spruce_shelf_3.name=Spruce Shelf Case
 tile.antiquities.birch_shelf_3.name=Birch Shelf Case
 tile.antiquities.jungle_shelf_3.name=Jungle Shelf Case
 tile.antiquities.acacia_shelf_3.name=Acacia Shelf Case
 tile.antiquities.dark_oak_shelf_3.name=Dark Oak Shelf Case
+
+tile.antiquities.sacredoak_shelf_3.name=Sacred Oak Shelf Case
+tile.antiquities.cherry_shelf_3.name=Cherry Shelf Case
+tile.antiquities.dark_shelf_3.name=Dark Shelf Case
+tile.antiquities.fir_shelf_3.name=Fir Shelf Case
+tile.antiquities.ethereal_shelf_3.name=Ethereal Shelf Case
+tile.antiquities.magic_shelf_3.name=Magic Shelf Case
+tile.antiquities.mangrove_shelf_3.name=Mangrove Shelf Case
+tile.antiquities.palm_shelf_3.name=Palm Shelf Case
+tile.antiquities.redwood_shelf_3.name=Redwood Shelf Case
+tile.antiquities.willow_shelf_3.name=Willow Shelf Case
+tile.antiquities.pine_shelf_3.name=Pine Shelf Case
+tile.antiquities.hellbark_shelf_3.name=Hellbark Shelf Case
+tile.antiquities.jacaranda_shelf_3.name=Jacaranda Shelf Case
+tile.antiquities.mahogany_shelf_3.name=Mahogany Shelf Case
 
 tile.antiquities.oak_shelf_4.name=Oak Cross Shelf Case
 tile.antiquities.spruce_shelf_4.name=Spruce Cross Shelf Case
@@ -49,12 +139,42 @@ tile.antiquities.jungle_shelf_4.name=Jungle Cross Shelf Case
 tile.antiquities.acacia_shelf_4.name=Acacia Cross Shelf Case
 tile.antiquities.dark_oak_shelf_4.name=Dark Oak Cross Shelf Case
 
+tile.antiquities.sacredoak_shelf_4.name=Sacred Oak Cross Shelf Case
+tile.antiquities.cherry_shelf_4.name=Cherry Cross Shelf Case
+tile.antiquities.dark_shelf_4.name=Dark Cross Shelf Case
+tile.antiquities.fir_shelf_4.name=Fir Cross Shelf Case
+tile.antiquities.ethereal_shelf_4.name=Ethereal Cross Shelf Case
+tile.antiquities.magic_shelf_4.name=Magic Cross Shelf Case
+tile.antiquities.mangrove_shelf_4.name=Mangrove Cross Shelf Case
+tile.antiquities.palm_shelf_4.name=Palm Cross Shelf Case
+tile.antiquities.redwood_shelf_4.name=Redwood Cross Shelf Case
+tile.antiquities.willow_shelf_4.name=Willow Cross Shelf Case
+tile.antiquities.pine_shelf_4.name=Pine Cross Shelf Case
+tile.antiquities.hellbark_shelf_4.name=Hellbark Cross Shelf Case
+tile.antiquities.jacaranda_shelf_4.name=Jacaranda Cross Shelf Case
+tile.antiquities.mahogany_shelf_4.name=Mahogany Cross Shelf Case
+
 tile.antiquities.oak_shelf_5.name=Oak Long Shelf Case
 tile.antiquities.spruce_shelf_5.name=Spruce Long Shelf Case
 tile.antiquities.birch_shelf_5.name=Birch Long Shelf Case
 tile.antiquities.jungle_shelf_5.name=Jungle Long Shelf Case
 tile.antiquities.acacia_shelf_5.name=Acacia Long Shelf Case
 tile.antiquities.dark_oak_shelf_5.name=Dark Oak Long Shelf Case
+
+tile.antiquities.sacredoak_shelf_5.name=Sacred Oak Long Shelf Case
+tile.antiquities.cherry_shelf_5.name=Cherry Long Shelf Case
+tile.antiquities.dark_shelf_5.name=Dark Long Shelf Case
+tile.antiquities.fir_shelf_5.name=Fir Long Shelf Case
+tile.antiquities.ethereal_shelf_5.name=Ethereal Long Shelf Case
+tile.antiquities.magic_shelf_5.name=Magic Long Shelf Case
+tile.antiquities.mangrove_shelf_5.name=Mangrove Long Shelf Case
+tile.antiquities.palm_shelf_5.name=Palm Long Shelf Case
+tile.antiquities.redwood_shelf_5.name=Redwood Long Shelf Case
+tile.antiquities.willow_shelf_5.name=Willow Long Shelf Case
+tile.antiquities.pine_shelf_5.name=Pine Long Shelf Case
+tile.antiquities.hellbark_shelf_5.name=Hellbark Long Shelf Case
+tile.antiquities.jacaranda_shelf_5.name=Jacaranda Long Shelf Case
+tile.antiquities.mahogany_shelf_5.name=Mahogany Long Shelf Case
 
 tile.antiquities.oak_jar.name=Oak Jar
 tile.antiquities.spruce_jar.name=Spruce Jar
@@ -63,12 +183,42 @@ tile.antiquities.jungle_jar.name=Jungle Jar
 tile.antiquities.acacia_jar.name=Acacia Jar
 tile.antiquities.dark_oak_jar.name=Dark Oak Jar
 
+tile.antiquities.sacredoak_jar.name=Sacred Oak Jar
+tile.antiquities.cherry_jar.name=Cherry Jar
+tile.antiquities.dark_jar.name=Dark Jar
+tile.antiquities.fir_jar.name=Fir Jar
+tile.antiquities.ethereal_jar.name=Ethereal Jar
+tile.antiquities.magic_jar.name=Magic Jar
+tile.antiquities.mangrove_jar.name=Mangrove Jar
+tile.antiquities.palm_jar.name=Palm Jar
+tile.antiquities.redwood_jar.name=Redwood Jar
+tile.antiquities.willow_jar.name=Willow Jar
+tile.antiquities.pine_jar.name=Pine Jar
+tile.antiquities.hellbark_jar.name=Hellbark Jar
+tile.antiquities.jacaranda_jar.name=Jacaranda Jar
+tile.antiquities.mahogany_jar.name=Mahogany Jar
+
 tile.antiquities.oak_rack.name=Oak Tool Rack
 tile.antiquities.spruce_rack.name=Spruce Tool Rack
 tile.antiquities.birch_rack.name=Birch Tool Rack
 tile.antiquities.jungle_rack.name=Jungle Tool Rack
 tile.antiquities.acacia_rack.name=Acacia Tool Rack
 tile.antiquities.dark_oak_rack.name=Dark Oak Tool Rack
+
+tile.antiquities.sacredoak_rack.name=Sacred Oak Rack
+tile.antiquities.cherry_rack.name=Cherry Rack
+tile.antiquities.dark_rack.name=Dark Rack
+tile.antiquities.fir_rack.name=Fir Rack
+tile.antiquities.ethereal_rack.name=Ethereal Rack
+tile.antiquities.magic_rack.name=Magic Rack
+tile.antiquities.mangrove_rack.name=Mangrove Rack
+tile.antiquities.palm_rack.name=Palm Rack
+tile.antiquities.redwood_rack.name=Redwood Rack
+tile.antiquities.willow_rack.name=Willow Rack
+tile.antiquities.pine_rack.name=Pine Rack
+tile.antiquities.hellbark_rack.name=Hellbark Rack
+tile.antiquities.jacaranda_rack.name=Jacaranda Rack
+tile.antiquities.mahogany_rack.name=Mahogany Rack
 
 tile.antiquities.clock.name=Clock
 

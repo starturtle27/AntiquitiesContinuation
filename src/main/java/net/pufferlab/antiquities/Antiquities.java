@@ -4,6 +4,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.pufferlab.antiquities.client.compat.NEIConfig;
 import net.pufferlab.antiquities.events.EventHandler;
+import net.pufferlab.antiquities.recipes.Recipes;
+import net.pufferlab.antiquities.recipes.RecipesBOP;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +31,6 @@ public class Antiquities {
     public static EventHandler eventHandler = new EventHandler();
 
     public static Registry registry = new Registry();
-    public static NEIConfig neiConfig = new NEIConfig();
 
     @Mod.Instance(Antiquities.MODID)
     public static Antiquities instance;
@@ -46,10 +47,9 @@ public class Antiquities {
 
         registry.init();
         if (Loader.isModLoaded("NotEnoughItems")) {
-            neiConfig.loadConfig();
+            new NEIConfig().loadConfig();
         }
         MinecraftForge.EVENT_BUS.register(eventHandler);
-
         proxy.registerRenders();
     }
 
@@ -57,6 +57,10 @@ public class Antiquities {
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
 
+        new Recipes().run();
+        if (Loader.isModLoaded("BiomesOPlenty")) {
+            new RecipesBOP().run();
+        }
         Config.refreshWhitelists();
     }
 

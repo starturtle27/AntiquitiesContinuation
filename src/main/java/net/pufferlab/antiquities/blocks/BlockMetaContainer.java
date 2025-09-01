@@ -9,6 +9,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.pufferlab.antiquities.Antiquities;
+import net.pufferlab.antiquities.Constants;
 import net.pufferlab.antiquities.Utils;
 
 import cpw.mods.fml.relauncher.Side;
@@ -40,18 +42,27 @@ public abstract class BlockMetaContainer extends BlockContainer {
         icons = new IIcon[elements.length];
         icons_model = new IIcon[elements.length];
         String actualName = name;
-        if (name.equals("shelf_0") || name.equals("shelf_1")
-            || name.equals("shelf_2")
-            || name.equals("shelf_3")
-            || name.equals("shelf_4")
-            || name.equals("shelf_5")) {
+        if (name.contains("shelf")) {
             actualName = "shelf";
         }
 
         for (int i = 0; i < elements.length; i++) {
             if (!Utils.containsExactMatch(elementsBlacklist, elements[i])) {
-                icons[i] = register.registerIcon("antiquities:" + elements[i]);
-                icons_model[i] = register.registerIcon("antiquities:" + elements[i] + "_" + actualName);
+                String wood = elements[i];
+                if (Utils.containsExactMatch(Constants.bopWoodTypes, wood)) {
+                    if (wood.contains("hellbark")) {
+                        wood = "hell_bark";
+                    }
+                    icons[i] = register.registerIcon("biomesoplenty:plank_" + wood);
+                } else if (Utils.containsExactMatch(Constants.woodTypes, wood)) {
+                    if (wood.contains("dark_oak")) {
+                        wood = "big_oak";
+                    }
+                    icons[i] = register.registerIcon("minecraft:planks_" + wood);
+                } else {
+                    icons[i] = register.registerIcon(Antiquities.MODID + ":" + elements[i]);
+                }
+                icons_model[i] = register.registerIcon(Antiquities.MODID + ":" + elements[i] + "_" + actualName);
             }
         }
     }

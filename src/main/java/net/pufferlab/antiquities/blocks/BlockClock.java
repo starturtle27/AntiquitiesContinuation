@@ -32,7 +32,7 @@ public class BlockClock extends BlockContainer {
         this.setHardness(2.0F);
         this.setResistance(5.0F);
         this.setStepSound(soundTypeWood);
-        this.setBlockName("antiquities.clock");
+        this.setBlockName(Antiquities.MODID + ".clock");
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
     }
@@ -78,8 +78,8 @@ public class BlockClock extends BlockContainer {
     public void registerBlockIcons(IIconRegister register) {
         icons = new IIcon[1];
         icons_model = new IIcon[1];
-        icons[0] = register.registerIcon("antiquities:clock");
-        icons_model[0] = register.registerIcon("antiquities:clock_model");
+        icons[0] = register.registerIcon(Antiquities.MODID + ":clock");
+        icons_model[0] = register.registerIcon(Antiquities.MODID + ":clock_model");
     }
 
     @SideOnly(Side.CLIENT)

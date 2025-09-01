@@ -3,6 +3,7 @@ package net.pufferlab.antiquities.itemblocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.pufferlab.antiquities.Antiquities;
 import net.pufferlab.antiquities.Utils;
 import net.pufferlab.antiquities.blocks.BlockMetaContainer;
 
@@ -28,9 +29,9 @@ public class ItemBlockMeta extends ItemBlock {
     public String getUnlocalizedName(ItemStack stack) {
         if (stack.getItemDamage() >= elements.length
             || Utils.containsExactMatch(elementsBlacklist, elements[stack.getItemDamage()])) {
-            return "tile.antiquities.error";
+            return "tile." + Antiquities.MODID + ".error";
         }
-        return "tile.antiquities." + elements[stack.getItemDamage()] + "_" + name;
+        return "tile." + Antiquities.MODID + "." + elements[stack.getItemDamage()] + "_" + name;
     }
 
     @Override

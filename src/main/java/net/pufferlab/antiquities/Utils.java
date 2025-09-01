@@ -1,5 +1,6 @@
 package net.pufferlab.antiquities;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -122,6 +123,15 @@ public class Utils {
     public static String getItemFromArray(String[] array, String[] blockArray, String targetString) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(targetString)) {
+                return blockArray[i];
+            }
+        }
+        return null;
+    }
+
+    public static Block getItemFromArray(String[] array, Block[] blockArray, String targetString) {
+        for (int i = 0; i < array.length; i++) {
+            if (targetString.equals(array[i])) {
                 return blockArray[i];
             }
         }
