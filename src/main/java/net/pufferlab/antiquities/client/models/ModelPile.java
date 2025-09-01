@@ -43,6 +43,11 @@ public class ModelPile extends ModelBase {
         int i3 = i % 8;
         int i5 = (int) (double) (i / 8);
         int texY = 5 * Utils.getItemFromArray(Constants.metalTypes, metal);
+        int texX = 0;
+        if (Utils.containsExactMatch(Constants.brickTypes, metal)) {
+            texX = 18;
+            texY = 5 * Utils.getItemFromArray(Constants.brickTypes, metal);
+        }
         float angle = 90;
         if (i5 % 2 == 0) {
             layer = layer1;
@@ -56,7 +61,7 @@ public class ModelPile extends ModelBase {
             posX = posX + 7F;
         }
         posZ = posZ - (4 * i2);
-        layer.cubeList.add(new ModelBox(bb_main, 0, texY, posX, posY, posZ, 6, 2, 3, 0.0F));
+        layer.cubeList.add(new ModelBox(bb_main, texX, texY, posX, posY, posZ, 6, 2, 3, 0.0F));
     }
 
     public void render(String type) {

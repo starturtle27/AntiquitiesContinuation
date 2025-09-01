@@ -10,6 +10,7 @@ public class Constants {
         "magic", "mangrove", "palm", "redwood", "willow", "bamboo", "pine", "hellbark", "jacaranda", "mahogany" };
     public static final String[] metalTypes = new String[] { "iron", "gold", "copper", "tin", "silver", "lead",
         "nickel", "bronze", "electrum", "invar", "constantan" };
+    public static final String[] brickTypes = new String[] { "brick", "bricknether" };
     public static final String[] stoneTypes = new String[] { "stone" };
     public static final float ModelConstant = 0.0625f;
 }
