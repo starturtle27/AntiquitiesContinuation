@@ -159,7 +159,11 @@ public class Registry {
         if (block instanceof BlockMetaContainer) {
             GameRegistry.registerBlock(block, ItemBlockMeta.class, name);
         } else {
-            GameRegistry.registerBlock(block, name);
+            if (block instanceof BlockPile) {
+                GameRegistry.registerBlock(block, null, name);
+            } else {
+                GameRegistry.registerBlock(block, name);
+            }
         }
     }
 }

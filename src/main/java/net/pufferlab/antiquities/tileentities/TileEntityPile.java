@@ -1,5 +1,6 @@
 package net.pufferlab.antiquities.tileentities;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class TileEntityPile extends TileEntityInventory {
@@ -27,6 +28,15 @@ public class TileEntityPile extends TileEntityInventory {
         }
         return false;
 
+    }
+
+    public Item getLastItem() {
+        for (int i = 0; i < getSizeInventory(); i++) {
+            if (getInventoryStack(i) == null) {
+                return getInventoryStack(i - 1).getItem();
+            }
+        }
+        return getInventoryStack(getSizeInventory() - 1).getItem();
     }
 
     public int getLayer() {

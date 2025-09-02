@@ -29,6 +29,8 @@ public class BlockChair extends BlockMetaContainer {
         float hitY, float hitZ) {
         if (world.isRemote) return true;
 
+        if (player.isSneaking()) return false;
+
         List<EntitySeat> seats = world
             .getEntitiesWithinAABB(EntitySeat.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1));
         if (!seats.isEmpty()) return true;

@@ -181,6 +181,15 @@ public class BlockPile extends BlockContainer {
         return 0;
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World worldIn, int x, int y, int z) {
+        if (worldIn.getTileEntity(x, y, z) instanceof TileEntityPile te) {
+            return te.getLastItem();
+        }
+        return null;
+    }
+
     private void place(ItemStack stack, World world, int x, int y, int z, Block toPlace, int metadata,
         EntityPlayer player) {
         if (world.isAirBlock(x, y, z)) {
